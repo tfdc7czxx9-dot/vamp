@@ -51,6 +51,20 @@ domain lead) should delegate to specialists.
 | `live-ops-designer` | Live operations | Sonnet | Seasons, events, battle passes, retention, live economy |
 | `community-manager` | Community | Haiku | Patch notes, player feedback, crisis comms, community health |
 
+## Store Publishing Agents (project-specific: Steam + Google Play + App Store)
+
+| Agent | Domain | Model | When to Use |
+|-------|--------|-------|-------------|
+| `steam-publishing-specialist` | Steam | Sonnet | Steamworks setup, Steamworks.NET (achievements, cloud, overlay), SteamPipe uploads, Steam Deck Verified, store review |
+| `android-publishing-specialist` | Google Play | Sonnet | Play Console, closed testing, AAB/signing, target API, Data safety, IARC, Play Games Services |
+| `ios-publishing-specialist` | Apple App Store | Sonnet | Developer Program, signing, Xcode export, privacy manifest, App Privacy, TestFlight, App Review |
+| `mobile-platform-programmer` | Mobile runtime | Sonnet | Touch joystick, safe areas, lifecycle, thermals, device tiers, mobile performance |
+| `store-marketing-specialist` | Go-to-market | Sonnet | Store copy, capsule/screenshot specs, ASO, pricing, wishlist and launch timing, press kit |
+| `legal-compliance-specialist` | Legal/compliance prep | Sonnet | Privacy policy, Impressum, DSA trader status, EULA, age ratings, license audit, trademark (not legal advice) |
+
+All six report through `release-manager` (publishing), `lead-programmer` (mobile runtime)
+or `producer` (marketing, legal). See `production/roadmap-to-launch.md` for when each is used.
+
 ## Engine-Specific Agents (use the set matching your engine)
 
 ### Engine Leads

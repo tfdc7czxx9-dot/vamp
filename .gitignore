@@ -13,6 +13,7 @@ Desktop.ini
 .claude/settings.local.json
 CLAUDE.local.md
 production/session-logs/
+production/session-state/active.md
 
 # === Internal Planning (not for public) ===
 
@@ -139,3 +140,27 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+# === Engine: Unity ===
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+*.csproj
+*.sln
+*.unityproj
+*.pidb
+*.booproj
+*.apk
+*.aab
+*.ipa
+crashlytics-build.properties
+# Signing material must never be committed
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
