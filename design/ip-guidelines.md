@@ -25,6 +25,8 @@ For example, the engravings by Riou and de Neuville in the Hetzel editions are P
 - **Film versions of *The Time Machine*** (1960, 2002): their Morlock and Eloi designs
 - ***The League of Extraordinary Gentlemen*** (Alan Moore comic, film): do not build a "team of famous Victorian literary heroes" premise or style around it. Our leaders are original characters.
 - **Edgar Rice Burroughs worlds** (Barsoom, Pellucidar, Tarzan): trademarks are actively enforced. Avoid entirely.
+- **"HD-2D"** is a Square Enix trademark: never use the term for our game, in store copy, tags or press. Say "2D-3D diorama" or "pixel art in 3D worlds".
+- **Final Fantasy / Octopath / other JRPGs**: the visual *technique* and the orchestral *genre* are free to use. Their names, logos, characters, sprites, UI layouts and **melodies/motifs** (preludes, fanfares, battle themes) are not. Never write "like Final Fantasy" in store copy (store policies on misleading metadata + trademark).
 - Any modern game, film or comic in the genre: no copying of names, character designs, UI or music.
 
 ## How we use the sources

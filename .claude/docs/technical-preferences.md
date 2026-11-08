@@ -4,8 +4,8 @@
 
 - **Engine**: Unity 6.3 LTS (ADR-0001 — `docs/architecture/adr-0001-engine-unity6.md`)
 - **Language**: C# (Unity's supported C# version; nullable reference types off in runtime assemblies)
-- **Rendering**: Universal Render Pipeline (URP) with the 2D Renderer, sprite-based, orthographic camera
-- **Physics**: No rigidbody physics for enemies — custom spatial-hash collision for hordes (see Performance Budgets); Physics2D only for player/pickup triggers if needed
+- **Rendering**: URP Universal Renderer (3D, Forward+) — pixel-art sprite billboards in 3D diorama environments, perspective camera, tilt-shift DOF/bloom, quality tiers (ADR-0002)
+- **Physics**: Gameplay on the XZ plane. No rigidbody physics for enemies — custom spatial-hash collision for hordes; no Physics2D
 
 ## Input & Platform
 
@@ -39,7 +39,8 @@
 
 - **Target Framerate**: 60 fps on PC/Steam Deck/modern mobile; 30 fps floor on low-tier Android (user-selectable)
 - **Frame Budget**: 16.6 ms total; gameplay simulation ≤ 4 ms with 500 active enemies on Steam Deck
-- **Draw Calls**: ≤ 150 batches (sprite atlases + GPU instancing / SRP Batcher)
+- **Draw Calls**: ≤ 150 batches mobile / ≤ 300 PC (swarm via instanced billboards in 1–3 draws, SRP Batcher for environments)
+- **Post-processing**: ≤ 3 ms on Medium tier (Steam Deck); tiers Low/Medium/High/Ultra data-driven (ADR-0002)
 - **Memory Ceiling**: 1.0 GB on mobile, 2 GB on PC
 - **Enemy cap**: 500 simultaneous on mobile, 1000 on PC (data-driven cap)
 - **Build size**: Android AAB base ≤ 150 MB (Play Asset Delivery beyond); iOS ≤ 200 MB initial download
@@ -60,6 +61,7 @@
 - Platform SDK calls outside the `Vamp.Platform` abstraction layer (no `Steamworks.*` or GameKit calls from gameplay code)
 - Ads SDKs, IAP, analytics that collect personal data — the game is premium and data-minimal
 - Instantiating/destroying per frame in hot paths (use pooling)
+- One SpriteRenderer GameObject per swarm enemy (use the instanced `ISwarmRenderer`)
 
 ## Allowed Libraries / Addons
 
@@ -73,6 +75,7 @@
 ## Architecture Decisions Log
 
 - ADR-0001 — Engine: Unity 6.3 LTS + C# (`docs/architecture/adr-0001-engine-unity6.md`)
+- ADR-0002 — Rendering: 2D sprites in 3D diorama worlds, URP Universal Renderer (`docs/architecture/adr-0002-rendering-diorama-2d3d.md`)
 
 ## Engine Specialists
 

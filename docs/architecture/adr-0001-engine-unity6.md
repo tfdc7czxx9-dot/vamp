@@ -30,7 +30,7 @@ store-plugin ecosystem and CI tooling (GameCI) for that combination.
 | Field | Value |
 |-------|-------|
 | Engine | Unity 6.3 LTS |
-| Render pipeline | URP (2D Renderer) |
+| Render pipeline | URP — amended by ADR-0002: Universal Renderer (3D) instead of 2D Renderer |
 | Scripting backend | IL2CPP on all platforms (required for iOS, recommended for Android ARM64 and for desktop performance) |
 | Android | ARM64, AAB output, Play Asset Delivery if > 150 MB |
 | iOS | Xcode project export, built and signed on macOS (local or CI runner) |
@@ -67,7 +67,7 @@ Fresh project — no code, no engine configured.
 
 ## Decision
 
-Use Unity 6.3 LTS, C#, URP 2D, Input System, Addressables, Localization package,
+Use Unity 6.3 LTS, C#, URP (renderer per ADR-0002), Input System, Addressables, Localization package,
 Unity Test Framework, IL2CPP.
 
 ### Architecture

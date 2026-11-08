@@ -30,6 +30,8 @@ the battlefield** to survive ever-larger swarms.
 | Target price | Steam €4.99 / mobile €3.99 (to validate with `store-marketing-specialist`) |
 | Session length | 15–20 minute runs; first run playable in < 60 s from launch |
 | Controls | Movement only. Attacking, recruiting and building all happen by *where you move and stand* |
+| Art style | 2D-3D diorama: pixel-art sprites in lit 3D worlds, tilt-shift DOF, bloom — premium JRPG-remake polish (`design/art/art-bible.md`, ADR-0002) |
+| Music | Orchestral JRPG-style score with leitmotifs + Victorian brass/steam colors, fully original (`design/gdd/sound-bible.md`) |
 | Rating target | PEGI 7–12 / USK 6–12 (creature and machine combat, no gore) |
 
 ## Core Fantasy
@@ -201,7 +203,9 @@ companion AI is the top technical risk and is validated in the first prototype.
 - Survivor-like market is crowded. Recruit + Engineering must prove fun in the prototype.
 - Companion and structure clutter on a phone screen needs strong readability (art-director, ux-designer).
 - IP: avoid elements from protected adaptations (see `design/ip-guidelines.md`).
-- Open: final title (trademark search), art style (pixel art vs. hand-drawn engraving style), music direction.
+- Art cost: two pipelines (pixel sprites + 3D environments) → modular environment kits per world.
+- Mobile performance of DOF/bloom/lights → quality tiers, benchmarked in the prototype.
+- Open: final title (trademark search), composer selection.
 
 ## Next Steps
 

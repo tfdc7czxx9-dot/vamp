@@ -18,7 +18,7 @@
 | 0.1 | Engine & tech preferences configured | technical-director | `/setup-engine` | ✅ done |
 | 0.2 | Game concept draft (v0.2: Verne/Wells setting, Recruit + Engineering) | creative-director, game-designer | `/brainstorm` | ✅ draft — owner review |
 | 0.3 | Store publishing agents created | — | — | ✅ done |
-| 0.4 | Create Unity 6.3 LTS project (URP 2D template) in Unity Hub, commit with Git LFS | **owner** + unity-specialist | — | ⬜ |
+| 0.4 | Create Unity 6.3 LTS project (**Universal 3D** template, see ADR-0002) in Unity Hub, commit with Git LFS | **owner** + unity-specialist | — | ⬜ |
 | 0.5 | Test framework + CI (GameCI: tests, Win/Linux/macOS/Android builds; iOS on macOS runner) | devops-engineer | `/test-setup` | ⬜ |
 | 0.6 | Accounts: Steamworks (Steam Direct fee), Google Play Console, Apple Developer Program | **owner**, checklists by publishing specialists | — | ⬜ |
 | 0.7 | Title trademark search, public-domain check of sources (`design/ip-guidelines.md`), business/tax questions for Steuerberater | legal-compliance-specialist | — | ⬜ |
@@ -28,7 +28,7 @@
 | # | Task | Agent(s) | Skill |
 |---|------|----------|-------|
 | 1.1 | Prototype: movement, auto-attack, horde, Recruit (companions) + Engineering (build plots) | prototyper, unity-specialist | `/prototype` |
-| 1.2 | Perf spike: 500 enemies @60 fps on Steam Deck + mid Android | performance-analyst, mobile-platform-programmer | `/perf-profile` |
+| 1.2 | Perf + look-dev spike: 500 instanced sprite billboards + lights + DOF/bloom in a 3D diorama (ADR-0002) on Steam Deck + low/mid Android | performance-analyst, mobile-platform-programmer | `/perf-profile` |
 | 1.3 | Playtest Recruit + Engineering (are both fun? readable on a phone?) | qa-lead, game-designer | `/playtest-report` |
 | 1.4 | Go / pivot decision | creative-director, producer | `/gate-check` |
 
@@ -36,11 +36,11 @@
 
 | # | Task | Agent(s) | Skill |
 |---|------|----------|-------|
-| 2.1 | Art bible (style, palette, readability on phone) | art-director | `/art-bible` |
+| 2.1 | Art bible (draft exists: 2D-3D diorama) + environment kit plan | art-director, technical-artist | `/art-bible` |
 | 2.2 | Systems map + GDDs (movement, powers, horde, night clock, progression, save) | game-designer, systems-designer, economy-designer | `/map-systems`, `/design-system` |
 | 2.3 | Architecture + ADRs (platform layer, horde sim, save/cloud, data format) | technical-director, lead-programmer | `/create-architecture`, `/architecture-decision` |
 | 2.4 | UX: HUD, touch controls, menus, accessibility | ux-designer, accessibility-specialist | `/ux-design` |
-| 2.5 | Sound bible | audio-director | — |
+| 2.5 | Sound bible (draft exists) + composer search/contract | audio-director, legal-compliance-specialist | `/team-audio` |
 | 2.6 | Epics + stories, sprint 1 | producer | `/create-epics`, `/create-stories`, `/sprint-plan` |
 
 ## Phase 3 — Vertical slice (MVP scope from concept)

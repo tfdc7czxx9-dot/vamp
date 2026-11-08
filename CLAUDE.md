@@ -15,7 +15,8 @@ Each agent owns a specific domain, enforcing separation of concerns and quality.
 - **Language**: C#
 - **Version Control**: Git with trunk-based development (Git LFS for binary assets)
 - **Build System**: Unity Build Profiles + GameCI (GitHub Actions) for Windows/macOS/Linux, Android (AAB), iOS (Xcode project)
-- **Asset Pipeline**: Unity Addressables, Sprite Atlases, URP 2D Renderer
+- **Asset Pipeline**: Unity Addressables, Sprite Atlases, URP Universal Renderer (3D) with instanced sprite billboards — 2D-3D diorama look (ADR-0002)
+- **Art / Audio direction**: `design/art/art-bible.md`, `design/gdd/sound-bible.md`
 
 > **Note**: This project uses the **Unity** specialist set (`unity-specialist`,
 > `unity-ui-specialist`, `unity-addressables-specialist`, `unity-shader-specialist`,
