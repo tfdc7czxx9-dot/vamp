@@ -50,6 +50,10 @@ namespace Vamp.Game
             _clips[SimEventType.BossSpawned] = Arp("boss", new[] { 110f, 104f, 98f, 92f }, 0.3f);
             _clips[SimEventType.NotEnoughBrass] = Tone("deny", 0.15f, 200f, 160f, Wave.Square, 0.3f);
             _clips[SimEventType.CompanionLost] = Arp("lost", new[] { 392f, 330f, 262f }, 0.12f);
+            _clips[SimEventType.Evolved] = Arp("evolve", new[] { 523f, 659f, 784f, 1046f, 1318f, 1568f }, 0.07f);
+            _clips[SimEventType.Synergy] = Zap("synergy", 0.3f);
+            _clips[SimEventType.EnemyShot] = Tone("enemyshot", 0.08f, 700f, 500f, Wave.Triangle, 0.12f);
+            _clips[SimEventType.BossCharge] = Boom("charge", 0.35f);
             _music.clip = Theme();
         }
 

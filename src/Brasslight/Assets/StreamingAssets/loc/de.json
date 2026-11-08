@@ -635,6 +635,138 @@
   {
    "k": "ach.ACH_BESTIARY_RECRUIT_ALL",
    "v": "Die vollständige Crew"
+  },
+  {
+   "k": "menu.bestiary",
+   "v": "Bestiarium"
+  },
+  {
+   "k": "bestiary.title",
+   "v": "Bestiarium"
+  },
+  {
+   "k": "bestiary.count",
+   "v": "{0}/{1} Kreaturen"
+  },
+  {
+   "k": "bestiary.unknown",
+   "v": "???"
+  },
+  {
+   "k": "bestiary.legend",
+   "v": "??? = noch nicht begegnet   ★ = in die Crew aufgenommen"
+  },
+  {
+   "k": "levelup.evolve",
+   "v": "EVOLUTION"
+  },
+  {
+   "k": "toast.evolved",
+   "v": "Entwickelt: {0}!"
+  },
+  {
+   "k": "toast.charged",
+   "v": "Synergie! Gefährten am Blitzmast sind aufgeladen."
+  },
+  {
+   "k": "toast.overclocked",
+   "v": "Synergie! Gefährten am Dampfgeschütz sind übertaktet."
+  },
+  {
+   "k": "language.fr",
+   "v": "Français"
+  },
+  {
+   "k": "ach.ACH_SYNERGY_EVOLUTION",
+   "v": "Blitz-Dreibein"
+  },
+  {
+   "k": "ach.ACH_EVOLUTION_FIRST",
+   "v": "Evolution vollendet"
+  },
+  {
+   "k": "ach.ACH_LEADERS_UNLOCK_ALL",
+   "v": "Volle Besetzung"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_10",
+   "v": "Feldnotizen"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_ALL",
+   "v": "Naturphilosophin"
+  },
+  {
+   "k": "evolution.steam_cannon.name",
+   "v": "Donnerkanone"
+  },
+  {
+   "k": "evolution.steam_cannon.desc",
+   "v": "Zwillingsrohre durchschlagen ganze Reihen."
+  },
+  {
+   "k": "evolution.arc_coil.name",
+   "v": "Sturmspule"
+  },
+  {
+   "k": "evolution.arc_coil.desc",
+   "v": "Ein knisternder Sturm springt über den Schwarm."
+  },
+  {
+   "k": "evolution.gyro_blades.name",
+   "v": "Zyklonrotor"
+  },
+  {
+   "k": "evolution.gyro_blades.desc",
+   "v": "Eine wirbelnde Wand aus Messing."
+  },
+  {
+   "k": "evolution.mortar.name",
+   "v": "Belagerungsbatterie"
+  },
+  {
+   "k": "evolution.mortar.desc",
+   "v": "Ein rollendes Sperrfeuer aus Granaten."
+  },
+  {
+   "k": "evolution.flame_bellows.name",
+   "v": "Drachenbalg"
+  },
+  {
+   "k": "evolution.flame_bellows.desc",
+   "v": "Ein tosender Feuerstrom."
+  },
+  {
+   "k": "evolution.aether_pulse.name",
+   "v": "Äthervortex"
+  },
+  {
+   "k": "evolution.aether_pulse.desc",
+   "v": "Die Luft selbst brennt um dich herum."
+  },
+  {
+   "k": "leader.aurelie_dumont.name",
+   "v": "Prof. Aurelie Dumont, Geologin"
+  },
+  {
+   "k": "leader.aurelie_dumont.desc",
+   "v": "Startet mit 25 Messing."
+  },
+  {
+   "k": "leader.kasimir_wolde.name",
+   "v": "Kasimir Wolde, Ätherphysiker"
+  },
+  {
+   "k": "leader.kasimir_wolde.desc",
+   "v": "+15 % Schaden."
+  },
+  {
+   "k": "leader.sefa_okoro.name",
+   "v": "Dr. Sefa Okoro, Schiffsärztin"
+  },
+  {
+   "k": "leader.sefa_okoro.desc",
+   "v": "+1 Koje, +20 % Sammelradius."
   }
  ]
 }

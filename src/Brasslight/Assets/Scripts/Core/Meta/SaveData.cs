@@ -22,6 +22,8 @@ namespace Vamp.Core.Meta
         public List<string> unlockedLeaders = new List<string>();
         /// <summary>Enemy ids ever recruited (bestiary).</summary>
         public List<string> recruitedSpecies = new List<string>();
+        /// <summary>Enemy ids ever defeated (bestiary discovery).</summary>
+        public List<string> seenSpecies = new List<string>();
         /// <summary>Selected leader id.</summary>
         public string selectedLeader = "";
         /// <summary>Selected world id.</summary>

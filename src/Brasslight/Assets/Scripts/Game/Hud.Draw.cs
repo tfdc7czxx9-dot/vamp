@@ -51,6 +51,7 @@ namespace Vamp.Game
                 case GameScreen.Research: DrawPanelMenu(L("research.title"), g.Loc.F("menu.points", g.Save.researchPoints)); break;
                 case GameScreen.Options: DrawPanelMenu(L("options.title"), null); break;
                 case GameScreen.Credits: DrawPanelMenu(L("credits.title"), L("credits.body")); break;
+                case GameScreen.Bestiary: DrawPanelMenu(L("bestiary.title"), BestiaryText()); break;
                 case GameScreen.Run: DrawRunHud(); break;
                 case GameScreen.Pause: DrawRunHud(); Dim(); DrawPanelMenu(L("pause.title"), null); break;
                 case GameScreen.LevelUp: DrawRunHud(); Dim(); DrawCards(g.Loc.F("levelup.title", g.Sim.Player.Level), null); break;
@@ -127,7 +128,8 @@ namespace Vamp.Game
             float itemH = 54, gap = 10;
             float detailH = 0;
             foreach (var it in _items) if (it.Detail != null) detailH += 28;
-            float bodyH = _g.Screen == GameScreen.Credits ? 300 : 0;
+            bool textScreen = _g.Screen == GameScreen.Credits || _g.Screen == GameScreen.Bestiary;
+            float bodyH = textScreen ? 320 : 0;
             float ph = 120 + (subtitle != null ? 40 : 0) + bodyH + _items.Count * (itemH + gap) + detailH;
             ph = Mathf.Min(ph, _safe.height - 20);
             var panel = new Rect(_safe.center.x - pw / 2, _safe.center.y - ph / 2, pw, ph);
@@ -135,12 +137,12 @@ namespace Vamp.Game
             float y = panel.y + 24;
             Text(new Rect(panel.x + 30, y, pw - 60, 44), title, _h1);
             y += 56;
-            if (subtitle != null && _g.Screen != GameScreen.Credits)
+            if (subtitle != null && !textScreen)
             {
                 Text(new Rect(panel.x + 30, y, pw - 60, 30), subtitle, _body, Brass);
                 y += 40;
             }
-            if (_g.Screen == GameScreen.Credits)
+            if (textScreen)
             {
                 Text(new Rect(panel.x + 30, y, pw - 60, bodyH), subtitle, _small);
                 y += bodyH;

@@ -103,6 +103,7 @@ namespace Vamp.Game
                 case GameScreen.Title:
                     Add(L("menu.start"), () => g.Screen = GameScreen.Expedition);
                     Add(L("menu.research"), () => g.Screen = GameScreen.Research, g.Loc.F("menu.points", g.Save.researchPoints));
+                    Add(L("menu.bestiary"), () => g.Screen = GameScreen.Bestiary, g.Loc.F("bestiary.count", g.Save.seenSpecies.Count, cfg.enemies.Length));
                     Add(L("menu.options"), () => g.Screen = GameScreen.Options);
                     Add(L("menu.credits"), () => g.Screen = GameScreen.Credits);
                     if (!Application.isMobilePlatform) Add(L("menu.quit"), Application.Quit);
@@ -142,6 +143,7 @@ namespace Vamp.Game
                     BuildOptions();
                     break;
 
+                case GameScreen.Bestiary:
                 case GameScreen.Credits:
                     Add(L("menu.back"), () => g.Screen = GameScreen.Title);
                     _back = () => g.Screen = GameScreen.Title;
@@ -215,6 +217,30 @@ namespace Vamp.Game
 
         private string OnOff(bool b) => b ? L("options.on") : L("options.off");
 
+        /// <summary>Bestiary text: every creature per world, unknown until defeated, ★ once recruited.</summary>
+        private string BestiaryText()
+        {
+            var cfg = _g.Config;
+            var sb = new System.Text.StringBuilder();
+            foreach (var w in cfg.worlds)
+            {
+                sb.Append(Name("world", w.id, w.displayName)).Append(":  ");
+                bool first = true;
+                foreach (var id in w.enemyIds)
+                {
+                    if (!first) sb.Append(" · ");
+                    first = false;
+                    var e = cfg.enemies[cfg.EnemyIndex(id)];
+                    bool seen = _g.Save.seenSpecies.Contains(id);
+                    sb.Append(seen ? Name("enemy", id, e.displayName) : L("bestiary.unknown"));
+                    if (_g.Save.recruitedSpecies.Contains(id)) sb.Append(" ★");
+                }
+                sb.Append('\n');
+            }
+            sb.Append('\n').Append(L("bestiary.legend"));
+            return sb.ToString();
+        }
+
         private void CycleWorld(int d)
         {
             int n = _g.Config.worlds.Length;
@@ -243,6 +269,7 @@ namespace Vamp.Game
                 case UpgradeOptionKind.NewGadget: return Name("gadget", cfg.gadgets[o.Index].id, cfg.gadgets[o.Index].displayName);
                 case UpgradeOptionKind.GadgetLevel: return Name("gadget", cfg.gadgets[o.Index].id, cfg.gadgets[o.Index].displayName);
                 case UpgradeOptionKind.Passive: return Name("passive", cfg.passives[o.Index].id, cfg.passives[o.Index].displayName);
+                case UpgradeOptionKind.Evolve: return _g.Loc.Get("evolution." + cfg.gadgets[o.Index].id + ".name", cfg.gadgets[o.Index].evolvedName);
                 default: return L("levelup.heal");
             }
         }
@@ -255,6 +282,7 @@ namespace Vamp.Game
                 case UpgradeOptionKind.NewGadget: return L("levelup.new") + "\n" + Desc("gadget", cfg.gadgets[o.Index].id, cfg.gadgets[o.Index].description);
                 case UpgradeOptionKind.GadgetLevel: return _g.Loc.F("levelup.level", o.NextLevel) + "\n" + Desc("gadget", cfg.gadgets[o.Index].id, cfg.gadgets[o.Index].description);
                 case UpgradeOptionKind.Passive: return _g.Loc.F("levelup.level", o.NextLevel) + "\n" + Desc("passive", cfg.passives[o.Index].id, cfg.passives[o.Index].description);
+                case UpgradeOptionKind.Evolve: return L("levelup.evolve") + "\n" + _g.Loc.Get("evolution." + cfg.gadgets[o.Index].id + ".desc", cfg.gadgets[o.Index].evolvedDescription);
                 default: return L("levelup.healdesc");
             }
         }

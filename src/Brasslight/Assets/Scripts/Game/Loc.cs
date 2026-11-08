@@ -17,7 +17,7 @@ namespace Vamp.Game
         private readonly Dictionary<string, string> _fallback = new Dictionary<string, string>();
 
         /// <summary>Supported language codes.</summary>
-        public static readonly string[] Languages = { "en", "de" };
+        public static readonly string[] Languages = { "en", "de", "fr" };
 
         /// <summary>Active language code.</summary>
         public string Language { get; private set; } = "en";
@@ -65,7 +65,12 @@ namespace Vamp.Game
         public static string Resolve(string saved)
         {
             if (!string.IsNullOrEmpty(saved) && Array.IndexOf(Languages, saved) >= 0) return saved;
-            return Application.systemLanguage == SystemLanguage.German ? "de" : "en";
+            switch (Application.systemLanguage)
+            {
+                case SystemLanguage.German: return "de";
+                case SystemLanguage.French: return "fr";
+                default: return "en";
+            }
         }
     }
 }

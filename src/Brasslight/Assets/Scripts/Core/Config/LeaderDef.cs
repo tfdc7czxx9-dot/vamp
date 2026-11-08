@@ -22,6 +22,14 @@ namespace Vamp.Core.Config
         public float recruitTimeBonus;
         /// <summary>Flat max HP bonus.</summary>
         public float maxHpBonus;
+        /// <summary>Damage bonus fraction.</summary>
+        public float mightBonus;
+        /// <summary>Magnet radius bonus fraction.</summary>
+        public float magnetBonus;
+        /// <summary>Brass at run start.</summary>
+        public int startingBrass;
+        /// <summary>Extra crew capacity.</summary>
+        public int crewBonus;
         /// <summary>Research points needed to unlock (0 = available from the start).</summary>
         public int unlockCost;
         /// <summary>Sprite index in the hero atlas.</summary>

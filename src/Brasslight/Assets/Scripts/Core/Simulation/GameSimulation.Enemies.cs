@@ -113,6 +113,8 @@ namespace Vamp.Core.Simulation
                 Xp = elite ? (int)MathF.Round(d.xp * Config.run.eliteXpMultiplier) : d.xp,
                 Elite = elite,
                 Boss = boss,
+                ShootTimer = d.shootInterval * Rng.Range(0.5f, 1f),
+                ChargeTimer = d.chargeInterval,
             };
             EnemyCount++;
             return idx;
@@ -159,9 +161,39 @@ namespace Vamp.Core.Simulation
                 }
 
                 Vec2 dir = (target - e.Pos).Normalized;
-                Vec2 push = Separation(i, ref e);
-                float speed = e.Speed * (e.Slow > 0f ? 0.6f : 1f);
-                Vec2 vel = dir * speed + push;
+                var def = Config.enemies[e.Def];
+                if (def.shootInterval > 0f)
+                {
+                    e.ShootTimer -= dt;
+                    if (e.ShootTimer <= 0f && Vec2.SqrDistance(e.Pos, Player.Pos) <= def.shootRange * def.shootRange)
+                    {
+                        e.ShootTimer = def.shootInterval;
+                        FireVolley(e, def);
+                    }
+                }
+                Vec2 vel;
+                if (e.Charging > 0f)
+                {
+                    e.Charging -= dt;
+                    vel = e.ChargeDir * e.Speed * def.chargeSpeedMultiplier;
+                }
+                else
+                {
+                    if (def.chargeInterval > 0f)
+                    {
+                        e.ChargeTimer -= dt;
+                        if (e.ChargeTimer <= 0f)
+                        {
+                            e.ChargeTimer = def.chargeInterval;
+                            e.Charging = 1f;
+                            e.ChargeDir = dir;
+                            Emit(SimEventType.BossCharge, e.Pos, dir, 0f, e.Def);
+                        }
+                    }
+                    Vec2 push = Separation(i, ref e);
+                    float speed = e.Speed * (e.Slow > 0f ? 0.6f : 1f);
+                    vel = dir * speed + push;
+                }
                 e.Pos += vel * dt;
                 if (dir.SqrMagnitude > 0f) e.Facing = dir;
 
@@ -198,6 +230,20 @@ namespace Vamp.Core.Simulation
                     }
                 }
             }
+        }
+
+        private void FireVolley(in Enemy e, EnemyDef def)
+        {
+            float dmg = def.shotDamage * (e.Elite ? 1.5f : 1f);
+            int count = System.Math.Max(1, def.shotCount);
+            Vec2 aim = (Player.Pos - e.Pos).Normalized;
+            float baseAngle = MathF.Atan2(aim.Y, aim.X);
+            for (int k = 0; k < count; k++)
+            {
+                float a = count >= 8 ? baseAngle + k * MathF.PI * 2f / count : baseAngle + (k - (count - 1) * 0.5f) * 0.21f;
+                SpawnProjectile(ProjectileKind.EnemyShot, e.Pos, Vec2.FromAngle(a) * def.shotSpeed, dmg, 0.25f, 0, 3.5f);
+            }
+            Emit(SimEventType.EnemyShot, e.Pos, aim, count, e.Def);
         }
 
         private Vec2 Separation(int self, ref Enemy e)

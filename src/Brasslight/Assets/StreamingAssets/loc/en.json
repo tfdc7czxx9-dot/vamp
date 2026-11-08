@@ -379,6 +379,66 @@
   {
    "k": "ach.ACH_BESTIARY_RECRUIT_ALL",
    "v": "The Complete Crew"
+  },
+  {
+   "k": "menu.bestiary",
+   "v": "Bestiary"
+  },
+  {
+   "k": "bestiary.title",
+   "v": "Bestiary"
+  },
+  {
+   "k": "bestiary.count",
+   "v": "{0}/{1} creatures"
+  },
+  {
+   "k": "bestiary.unknown",
+   "v": "???"
+  },
+  {
+   "k": "bestiary.legend",
+   "v": "??? = not yet encountered   ★ = recruited into your crew"
+  },
+  {
+   "k": "levelup.evolve",
+   "v": "EVOLUTION"
+  },
+  {
+   "k": "toast.evolved",
+   "v": "Evolved: {0}!"
+  },
+  {
+   "k": "toast.charged",
+   "v": "Synergy! Companions near a Lightning Mast are charged."
+  },
+  {
+   "k": "toast.overclocked",
+   "v": "Synergy! Companions near a Steam Turret are overclocked."
+  },
+  {
+   "k": "language.fr",
+   "v": "Français"
+  },
+  {
+   "k": "ach.ACH_SYNERGY_EVOLUTION",
+   "v": "Lightning Tripod"
+  },
+  {
+   "k": "ach.ACH_EVOLUTION_FIRST",
+   "v": "Evolution Complete"
+  },
+  {
+   "k": "ach.ACH_LEADERS_UNLOCK_ALL",
+   "v": "Full Roster"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_10",
+   "v": "Field Notes"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_ALL",
+   "v": "Natural Philosopher"
   }
  ]
 }

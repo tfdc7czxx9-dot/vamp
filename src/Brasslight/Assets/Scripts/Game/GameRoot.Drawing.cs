@@ -9,7 +9,7 @@ namespace Vamp.Game
     {
         private int[] _enemyMat, _enemyFlash, _eliteMat, _leaderMat, _structureMat, _pickupMat;
         private int _shadowMat, _plotMat, _plotActiveMat, _remnantRingMat, _progressRingMat, _crewRingMat;
-        private int _boltMat, _turretBoltMat, _shellWarnMat, _bladeMat;
+        private int _boltMat, _turretBoltMat, _shellWarnMat, _bladeMat, _enemyShotMat, _evolvedBladeMat;
         private readonly Vec2[] _plotPos = new Vec2[64];
         private readonly int[] _plotStruct = new int[64];
 
@@ -50,6 +50,8 @@ namespace Vamp.Game
             _turretBoltMat = Batcher.Register(Materials.Sprite(PixelArt.Dot(6, new Color(0.6f, 0.9f, 1f)), true, Color.white, new Color(1f, 2f, 3f)));
             _shellWarnMat = Batcher.Register(Materials.Sprite(PixelArt.Ring(32, 2, new Color(1f, 0.3f, 0.2f), true), true, Color.white, new Color(2f, 0.4f, 0.2f)));
             _bladeMat = Batcher.Register(Materials.Sprite(PixelArt.Pickup(1), true, Color.white, new Color(1.5f, 1.1f, 0.4f)));
+            _evolvedBladeMat = Batcher.Register(Materials.Sprite(PixelArt.Pickup(1), true, new Color(0.7f, 0.9f, 1f), new Color(1.2f, 2.2f, 3f)));
+            _enemyShotMat = Batcher.Register(Materials.Sprite(PixelArt.Dot(8, new Color(1f, 0.25f, 0.35f)), true, Color.white, new Color(3f, 0.4f, 0.6f)));
         }
 
         private WorldDef WorldOf(string enemyId)
@@ -153,12 +155,12 @@ namespace Vamp.Game
             {
                 var d = cfg.gadgets[g.Def];
                 if (d.Kind != GadgetKind.GyroBlades) continue;
-                int count = GameSimulation.GadgetCount(d, g.Level);
-                float orbit = sim.BladeOrbitRadius(d);
+                int count = sim.EffectiveCount(g);
+                float orbit = d.area * sim.EffectiveAreaMultiplier(g);
                 for (int k = 0; k < count; k++)
                 {
                     var bp = sim.Player.Pos + Vec2.FromAngle(g.Angle + k * Mathf.PI * 2f / count) * orbit;
-                    Batcher.Billboard(_bladeMat, bp.ToWorld(), 0.55f, 0.55f, false, 0.4f);
+                    Batcher.Billboard(g.Evolved ? _evolvedBladeMat : _bladeMat, bp.ToWorld(), 0.55f, 0.55f, false, 0.4f);
                 }
             }
 
@@ -171,6 +173,7 @@ namespace Vamp.Game
                 {
                     case ProjectileKind.Shell: Batcher.Flat(_shellWarnMat, pr.Pos.ToWorld(), pr.Radius * 2f * (1f - pr.Life), t * 90f); break;
                     case ProjectileKind.TurretBolt: Batcher.Billboard(_turretBoltMat, pr.Pos.ToWorld(), 0.3f, 0.3f, false, 0.5f); break;
+                    case ProjectileKind.EnemyShot: Batcher.Billboard(_enemyShotMat, pr.Pos.ToWorld(), 0.42f, 0.42f, false, 0.5f); break;
                     default: Batcher.Billboard(_boltMat, pr.Pos.ToWorld(), 0.35f, 0.35f, false, 0.5f); break;
                 }
             }

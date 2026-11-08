@@ -11,6 +11,8 @@ namespace Vamp.Core.Simulation
         Shell,
         /// <summary>Straight shot from a turret structure.</summary>
         TurretBolt,
+        /// <summary>Hostile shot that damages the player and companions.</summary>
+        EnemyShot,
     }
 
     /// <summary>Pooled projectile state.</summary>

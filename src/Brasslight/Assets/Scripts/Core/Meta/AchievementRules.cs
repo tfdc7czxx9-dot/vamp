@@ -29,6 +29,8 @@ namespace Vamp.Core.Meta
                 Unlock("ACH_RUN_SURVIVE_15", save, newlyUnlocked);
                 if (standing >= 8) Unlock("ACH_FORTRESS_RUN", save, newlyUnlocked);
             }
+            if (sim.Stats.SynergyTriggered) Unlock("ACH_SYNERGY_EVOLUTION", save, newlyUnlocked);
+            if (sim.Stats.Evolutions > 0) Unlock("ACH_EVOLUTION_FIRST", save, newlyUnlocked);
             if (sim.Phase == RunPhase.Victory && sim.CrewCount >= sim.CrewCapacity && sim.CrewCapacity > 0)
                 Unlock("ACH_BOSS_FULL_CREW", save, newlyUnlocked);
         }
@@ -47,6 +49,12 @@ namespace Vamp.Core.Meta
             if (save.totalRuns >= 50) Unlock("ACH_RUNS_50", save, newlyUnlocked);
             if (save.unlockedLeaders.Count >= 1) Unlock("ACH_LEADER_FIRST_UNLOCK", save, newlyUnlocked);
             if (save.upgrades.Count > 0) Unlock("ACH_RESEARCH_FIRST", save, newlyUnlocked);
+
+            int lockedLeaders = 0;
+            foreach (var l in config.leaders) if (l.unlockCost > 0) lockedLeaders++;
+            if (lockedLeaders > 0 && save.unlockedLeaders.Count >= lockedLeaders) Unlock("ACH_LEADERS_UNLOCK_ALL", save, newlyUnlocked);
+            if (save.seenSpecies.Count >= 10) Unlock("ACH_BESTIARY_10", save, newlyUnlocked);
+            if (config.enemies.Length > 0 && save.seenSpecies.Count >= config.enemies.Length) Unlock("ACH_BESTIARY_ALL", save, newlyUnlocked);
 
             int won = 0;
             foreach (var w in config.worlds)

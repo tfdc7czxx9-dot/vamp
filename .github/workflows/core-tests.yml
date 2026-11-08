@@ -22,9 +22,11 @@ jobs:
         run: |
           python3 - <<'PY'
           import json
-          en = {e["k"] for e in json.load(open("src/Brasslight/Assets/StreamingAssets/loc/en.json", encoding="utf-8"))["entries"]}
-          de = {e["k"] for e in json.load(open("src/Brasslight/Assets/StreamingAssets/loc/de.json", encoding="utf-8"))["entries"]}
-          missing = sorted(en - de)
-          assert not missing, f"keys missing in de.json: {missing}"
-          print(f"en={len(en)} de={len(de)} OK")
+          def keys(lang):
+              return {e["k"] for e in json.load(open(f"src/Brasslight/Assets/StreamingAssets/loc/{lang}.json", encoding="utf-8"))["entries"]}
+          en = keys("en")
+          for lang in ("de", "fr"):
+              missing = sorted(en - keys(lang))
+              assert not missing, f"keys missing in {lang}.json: {missing}"
+          print(f"en={len(en)} keys, de/fr complete")
           PY

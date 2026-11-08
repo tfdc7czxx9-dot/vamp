@@ -128,7 +128,15 @@ namespace Vamp.Game
         /// <summary>Expedition leader sprite (coat, goggles, hat) tinted per leader.</summary>
         public static Texture2D Leader(int index)
         {
-            Color coat = index switch { 0 => new Color(0.55f, 0.27f, 0.15f), 1 => new Color(0.2f, 0.4f, 0.28f), _ => new Color(0.18f, 0.25f, 0.5f) };
+            Color coat = index switch
+            {
+                0 => new Color(0.55f, 0.27f, 0.15f),
+                1 => new Color(0.2f, 0.4f, 0.28f),
+                2 => new Color(0.18f, 0.25f, 0.5f),
+                3 => new Color(0.45f, 0.42f, 0.38f),
+                4 => new Color(0.38f, 0.2f, 0.45f),
+                _ => new Color(0.75f, 0.72f, 0.66f),
+            };
             string[] rows =
             {
                 "....kkkkkk......",

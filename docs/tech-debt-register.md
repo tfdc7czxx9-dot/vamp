@@ -17,16 +17,18 @@
 | TD-08 | **Google Play Games (optional)**: achievements / saved games backend | Optional for premium launch | android-publishing-specialist | M |
 | TD-09 | **Application identifier** placeholder `com.yourname.brasslight` | Owner's handle unknown | owner | XS |
 
-## Design content still to build (1.0 scope from the concept)
+## Design content (1.0 scope from the concept)
 
 | ID | Item | Status |
 |----|------|--------|
-| C-01 | Gadget **evolutions** incl. crew+structure synergies (e.g. lightning tripod) | Not implemented; achievements referencing it are not evaluated |
-| C-02 | Leaders 4–6 (concept lists 6; 3 exist) | Data only (add to `balance.json` + sprites) |
-| C-03 | Bestiary screen (discovered/recruited creatures) | Save data tracks recruited species; no screen yet |
-| C-04 | Unique boss attack patterns (bosses currently use standard chase + contact damage) | Simulation extension |
-| C-05 | Ranged enemies / telegraphed attacks | Simulation extension |
-| C-06 | Additional languages (FR at launch per concept) | Add `loc/fr.json`; CI checks key parity |
+| C-01 | Gadget **evolutions** + crew/structure **synergies** | ✅ 6 evolutions (max level + partner passive); synergies "Charged" (Lightning Mast → chain attacks) and "Overclocked" (Steam Turret → +50 % attack speed) |
+| C-02 | Leaders 4–6 | ✅ 6 leaders (sprites are recoloured placeholders) |
+| C-03 | Bestiary | ✅ Screen + save tracking (seen / recruited); per-creature lore texts still to write (writer) |
+| C-04 | Boss attack patterns | ✅ Radial volleys + telegraphed charges; unique per-boss patterns still desirable |
+| C-05 | Ranged enemies | ✅ 4 shooter types across the worlds |
+| C-06 | Languages | ✅ EN, DE, FR (CI checks key parity); content-name translations for enemies pending |
+| C-07 | Unique visuals per evolution (currently same sprite with glow) | Open (art) |
+| C-08 | Balance pass with real players (bot dies at ~10–11 min without research; target: first win after ~5–8 runs) | Open (`/balance-check`, playtests) |
 
 ## Known simplifications in the simulation
 

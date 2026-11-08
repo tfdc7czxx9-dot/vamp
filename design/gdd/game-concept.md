@@ -1,6 +1,6 @@
 # Game Concept: BRASSLIGHT (codename VAMP)
 
-> **Status**: Draft v0.2 — owner chose setting and signature mechanics on 2026-11-08.
+> **Status**: v0.3 — setting, mechanics, art and music direction set by the owner; implemented as a playable build (see `docs/BUILDING.md`).
 > Supersedes v0.1 (vampire setting, dropped). Validate with
 > `/design-review design/gdd/game-concept.md`.
 >

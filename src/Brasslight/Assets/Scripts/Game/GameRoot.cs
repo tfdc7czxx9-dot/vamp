@@ -45,6 +45,7 @@ namespace Vamp.Game
         internal int LastRunPoints;
         internal readonly List<string> NewAchievements = new List<string>();
         internal readonly List<int> RecruitedThisRun = new List<int>();
+        internal readonly HashSet<int> SeenThisRun = new HashSet<int>();
 
         private readonly AutoPilot _pilot = new AutoPilot();
         private bool _attract;
@@ -148,6 +149,7 @@ namespace Vamp.Game
             _attract = false;
             WriteSave();
             RecruitedThisRun.Clear();
+            SeenThisRun.Clear();
             NewAchievements.Clear();
             CreateRun(SelectedWorld, SelectedLeader, (uint)System.Environment.TickCount | 1u, Meta.CreateModifiers(SelectedLeader));
             Sound.Music(true, 1f);
@@ -225,6 +227,10 @@ namespace Vamp.Game
                 Sound.Play(e.Type);
                 switch (e.Type)
                 {
+                    case SimEventType.EnemyKilled: SeenThisRun.Add(e.Index); break;
+                    case SimEventType.Evolved: Hud.Toast(Loc.F("toast.evolved", Loc.Get("evolution." + Config.gadgets[e.Index].id + ".name", Config.gadgets[e.Index].evolvedName))); break;
+                    case SimEventType.Synergy: Hud.Toast(Loc[e.Value > 1.5f ? "toast.overclocked" : "toast.charged"]); break;
+                    case SimEventType.BossCharge: Rig.Shake(0.3f); break;
                     case SimEventType.EliteSpawned: Hud.Toast(Loc.F("toast.elite", Config.enemies[e.Index].displayName)); break;
                     case SimEventType.BossSpawned: Hud.Toast(Loc.F("toast.boss", Config.enemies[e.Index].displayName)); break;
                     case SimEventType.Recruited:
@@ -242,7 +248,7 @@ namespace Vamp.Game
 
         private void EndRun()
         {
-            LastRunPoints = Meta.RecordRun(Sim, RecruitedThisRun);
+            LastRunPoints = Meta.RecordRun(Sim, RecruitedThisRun, SeenThisRun);
             var list = new List<string>();
             AchievementRules.EvaluateDuringRun(Sim, Save, list);
             AchievementRules.EvaluateLifetime(Config, Save, list);

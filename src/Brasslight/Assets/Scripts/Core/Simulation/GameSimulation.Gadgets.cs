@@ -28,6 +28,31 @@ namespace Vamp.Core.Simulation
         /// <summary>Radius at which gyro blades orbit.</summary>
         public float BladeOrbitRadius(GadgetDef d) => d.area * AreaMultiplier;
 
+        /// <summary>Damage of an owned gadget including evolution.</summary>
+        public float EffectiveDamage(in OwnedGadget g)
+        {
+            var d = Config.gadgets[g.Def];
+            return GadgetDamage(d, g.Level) * (g.Evolved ? d.evolvedDamageMultiplier : 1f);
+        }
+
+        /// <summary>Cooldown of an owned gadget including evolution.</summary>
+        public float EffectiveCooldown(in OwnedGadget g)
+        {
+            var d = Config.gadgets[g.Def];
+            return MathF.Max(0.08f, GadgetCooldown(d, g.Level) * (g.Evolved ? d.evolvedCooldownMultiplier : 1f));
+        }
+
+        /// <summary>Count of an owned gadget including evolution.</summary>
+        public int EffectiveCount(in OwnedGadget g)
+        {
+            var d = Config.gadgets[g.Def];
+            return GadgetCount(d, g.Level) + (g.Evolved ? d.evolvedCountBonus : 0);
+        }
+
+        /// <summary>Area multiplier of an owned gadget (passives × evolution).</summary>
+        public float EffectiveAreaMultiplier(in OwnedGadget g) =>
+            AreaMultiplier * (g.Evolved ? Config.gadgets[g.Def].evolvedAreaMultiplier : 1f);
+
         /// <summary>Hit radius of a single gyro blade.</summary>
         public float BladeHitRadius => 0.55f * AreaMultiplier;
 
@@ -37,8 +62,11 @@ namespace Vamp.Core.Simulation
             {
                 var g = Gadgets[gi];
                 var d = Config.gadgets[g.Def];
-                float dmg = GadgetDamage(d, g.Level);
-                int count = GadgetCount(d, g.Level);
+                float dmg = EffectiveDamage(g);
+                int count = EffectiveCount(g);
+                float areaMul = EffectiveAreaMultiplier(g);
+                float cooldown = EffectiveCooldown(g);
+                int pierceBonus = g.Evolved ? d.evolvedPierceBonus : 0;
                 g.Timer -= dt;
 
                 switch (d.Kind)
@@ -49,14 +77,14 @@ namespace Vamp.Core.Simulation
                             int t = NearestEnemy(Player.Pos, d.range);
                             if (t >= 0)
                             {
-                                g.Timer = GadgetCooldown(d, g.Level);
+                                g.Timer = cooldown;
                                 Vec2 aim = (Enemies[t].Pos - Player.Pos).Normalized;
                                 float baseAngle = MathF.Atan2(aim.Y, aim.X);
                                 for (int k = 0; k < count; k++)
                                 {
                                     float a = baseAngle + (k - (count - 1) * 0.5f) * 0.14f;
                                     SpawnProjectile(ProjectileKind.Bolt, Player.Pos, Vec2.FromAngle(a) * d.projectileSpeed, dmg,
-                                        d.area * AreaMultiplier, d.pierce + g.Level / 4, d.range / d.projectileSpeed + 0.3f);
+                                        d.area * areaMul, d.pierce + g.Level / 4 + pierceBonus, d.range / d.projectileSpeed + 0.3f);
                                 }
                                 Emit(SimEventType.GadgetFired, Player.Pos, aim, 0f, g.Def);
                             }
@@ -66,16 +94,16 @@ namespace Vamp.Core.Simulation
                     case GadgetKind.ArcCoil:
                         if (g.Timer <= 0f && NearestEnemy(Player.Pos, d.range) >= 0)
                         {
-                            g.Timer = GadgetCooldown(d, g.Level);
-                            ChainLightning(Player.Pos, d.range, d.area * AreaMultiplier, count, dmg);
+                            g.Timer = cooldown;
+                            ChainLightning(Player.Pos, d.range, d.area * areaMul, count, dmg);
                         }
                         break;
 
                     case GadgetKind.GyroBlades:
                     {
                         g.Angle += d.projectileSpeed * dt;
-                        float orbit = BladeOrbitRadius(d);
-                        float hitR = BladeHitRadius;
+                        float orbit = d.area * areaMul;
+                        float hitR = 0.55f * areaMul;
                         for (int k = 0; k < count; k++)
                         {
                             Vec2 bp = Player.Pos + Vec2.FromAngle(g.Angle + k * MathF.PI * 2f / count) * orbit;
@@ -104,11 +132,11 @@ namespace Vamp.Core.Simulation
                                     _query[live++] = _query[q];
                             if (live > 0)
                             {
-                                g.Timer = GadgetCooldown(d, g.Level);
+                                g.Timer = cooldown;
                                 for (int k = 0; k < count; k++)
                                 {
                                     Vec2 at = Enemies[_query[Rng.Range(0, live)]].Pos;
-                                    SpawnProjectile(ProjectileKind.Shell, at, Vec2.Zero, dmg, d.area * AreaMultiplier, 0, 0.6f);
+                                    SpawnProjectile(ProjectileKind.Shell, at, Vec2.Zero, dmg, d.area * areaMul, 0, 0.6f);
                                 }
                                 Emit(SimEventType.GadgetFired, Player.Pos, default, 0f, g.Def);
                             }
@@ -118,8 +146,8 @@ namespace Vamp.Core.Simulation
                     case GadgetKind.FlameBellows:
                         if (g.Timer <= 0f)
                         {
-                            g.Timer = GadgetCooldown(d, g.Level);
-                            float range = d.range * AreaMultiplier * (1f + 0.05f * (g.Level - 1));
+                            g.Timer = cooldown;
+                            float range = d.range * areaMul * (1f + 0.05f * (g.Level - 1));
                             float cosHalf = MathF.Cos(d.area * 0.5f * MathF.PI / 180f);
                             int n = _grid.Query(Player.Pos, range + 1f, _query);
                             for (int q = 0; q < n; q++)
@@ -140,8 +168,8 @@ namespace Vamp.Core.Simulation
                     case GadgetKind.AetherPulse:
                         if (g.Timer <= 0f)
                         {
-                            g.Timer = GadgetCooldown(d, g.Level);
-                            float radius = d.area * AreaMultiplier * (1f + 0.08f * (g.Level - 1));
+                            g.Timer = cooldown;
+                            float radius = d.area * areaMul * (1f + 0.08f * (g.Level - 1));
                             DamageArea(Player.Pos, radius, dmg, 0.6f);
                             Emit(SimEventType.Pulse, Player.Pos, default, radius, g.Def);
                         }
@@ -166,6 +194,27 @@ namespace Vamp.Core.Simulation
             }
         }
 
+        private void UpdateEnemyShot(ref Projectile pr)
+        {
+            float pr2 = pr.Radius + Config.player.radius;
+            if (Vec2.SqrDistance(pr.Pos, Player.Pos) < pr2 * pr2)
+            {
+                pr.Active = false;
+                HitPlayer(pr.Damage, pr.Pos);
+                return;
+            }
+            for (int c = 0; c < Companions.Length; c++)
+            {
+                ref var comp = ref Companions[c];
+                if (!comp.Active) continue;
+                float r = pr.Radius + comp.Radius;
+                if (Vec2.SqrDistance(pr.Pos, comp.Pos) >= r * r) continue;
+                comp.Hp -= pr.Damage;
+                pr.Active = false;
+                return;
+            }
+        }
+
         private void UpdateProjectiles(float dt)
         {
             for (int p = 0; p < Projectiles.Length; p++)
@@ -186,6 +235,12 @@ namespace Vamp.Core.Simulation
 
                 if (pr.Life <= 0f) { pr.Active = false; continue; }
                 pr.Pos += pr.Vel * dt;
+                if (pr.Kind == ProjectileKind.EnemyShot)
+                {
+                    UpdateEnemyShot(ref pr);
+                    if (IsOver) return;
+                    continue;
+                }
                 int n = _grid.Query(pr.Pos, pr.Radius + 1f, _query);
                 for (int q = 0; q < n; q++)
                 {

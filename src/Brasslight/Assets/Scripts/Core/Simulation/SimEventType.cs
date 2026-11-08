@@ -6,6 +6,6 @@ namespace Vamp.Core.Simulation
         EnemyHit, EnemyKilled, EliteSpawned, BossSpawned, PlayerHit, PlayerRevived, LevelUp,
         Recruited, Scrapped, CompanionAttack, CompanionLost, StructureBuilt, StructureUpgraded,
         StructureDestroyed, NotEnoughBrass, Lightning, Explosion, Flame, Pulse, PickupCollected,
-        GadgetFired,
+        GadgetFired, Evolved, Synergy, EnemyShot, BossCharge,
     }
 }

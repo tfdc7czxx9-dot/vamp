@@ -74,6 +74,9 @@ namespace Vamp.Game
                 case SimEventType.StructureDestroyed: Burst(e.A, 20, _fireMat, 5f); return 0.3f;
                 case SimEventType.LevelUp: AddRing(e.A, 0.5f, 7f, 0.5f); return 0f;
                 case SimEventType.BossSpawned: return 0.8f;
+                case SimEventType.BossCharge: AddRing(e.A, 1f, 4f, 0.4f); return 0f;
+                case SimEventType.Evolved: AddRing(e.A, 0.5f, 10f, 0.9f); Burst(e.A, 40, _sparkMat, 7f); return 0.4f;
+                case SimEventType.Synergy: AddRing(e.A, 0.5f, 5f, 0.6f); return 0.2f;
                 case SimEventType.PlayerRevived: AddRing(e.A, 0.5f, 9f, 0.8f); return 0.6f;
             }
             return 0f;

@@ -1,0 +1,772 @@
+{
+ "entries": [
+  {
+   "k": "subtitle",
+   "v": "Expéditions extraordinaires"
+  },
+  {
+   "k": "title.footer",
+   "v": "Inspiré des romans de Jules Verne et H. G. Wells"
+  },
+  {
+   "k": "menu.start",
+   "v": "Lancer l'expédition"
+  },
+  {
+   "k": "menu.research",
+   "v": "Recherche"
+  },
+  {
+   "k": "menu.options",
+   "v": "Options"
+  },
+  {
+   "k": "menu.credits",
+   "v": "Crédits"
+  },
+  {
+   "k": "menu.bestiary",
+   "v": "Bestiaire"
+  },
+  {
+   "k": "menu.quit",
+   "v": "Quitter"
+  },
+  {
+   "k": "menu.back",
+   "v": "Retour"
+  },
+  {
+   "k": "menu.points",
+   "v": "{0} points de recherche"
+  },
+  {
+   "k": "expedition.title",
+   "v": "Préparer l'expédition"
+  },
+  {
+   "k": "expedition.locked",
+   "v": "Verrouillé : vaincre le boss de {0}"
+  },
+  {
+   "k": "expedition.leaderlocked",
+   "v": "Verrouillé : {0} points de recherche"
+  },
+  {
+   "k": "expedition.unlock",
+   "v": "Engager pour {0} points de recherche"
+  },
+  {
+   "k": "expedition.begin",
+   "v": "Commencer l'expédition"
+  },
+  {
+   "k": "research.title",
+   "v": "Recherche"
+  },
+  {
+   "k": "research.max",
+   "v": "Recherche complète"
+  },
+  {
+   "k": "research.cost",
+   "v": "Coût : {0}"
+  },
+  {
+   "k": "options.title",
+   "v": "Options"
+  },
+  {
+   "k": "options.music",
+   "v": "Volume de la musique : {0} %"
+  },
+  {
+   "k": "options.sfx",
+   "v": "Volume des effets : {0} %"
+  },
+  {
+   "k": "options.quality",
+   "v": "Qualité graphique : {0}"
+  },
+  {
+   "k": "options.auto",
+   "v": "Automatique"
+  },
+  {
+   "k": "options.dof",
+   "v": "Profondeur de champ : {0}"
+  },
+  {
+   "k": "options.shake",
+   "v": "Tremblement de l'écran : {0}"
+  },
+  {
+   "k": "options.numbers",
+   "v": "Chiffres de dégâts : {0}"
+  },
+  {
+   "k": "options.language",
+   "v": "Langue : {0}"
+  },
+  {
+   "k": "options.on",
+   "v": "Activé"
+  },
+  {
+   "k": "options.off",
+   "v": "Désactivé"
+  },
+  {
+   "k": "quality.Low",
+   "v": "Basse"
+  },
+  {
+   "k": "quality.Medium",
+   "v": "Moyenne"
+  },
+  {
+   "k": "quality.High",
+   "v": "Haute"
+  },
+  {
+   "k": "quality.Ultra",
+   "v": "Ultra"
+  },
+  {
+   "k": "language.en",
+   "v": "English"
+  },
+  {
+   "k": "language.de",
+   "v": "Deutsch"
+  },
+  {
+   "k": "language.fr",
+   "v": "Français"
+  },
+  {
+   "k": "credits.title",
+   "v": "Crédits"
+  },
+  {
+   "k": "credits.body",
+   "v": "BRASSLIGHT\n\nMondes inspirés des romans du domaine public de Jules Verne\n(Voyage au centre de la Terre, Vingt mille lieues sous les mers)\net de H. G. Wells (La Guerre des mondes, Les Premiers Hommes dans la Lune).\n\nTous les personnages, graphismes, musiques et designs de ce jeu sont originaux.\nRéalisé avec Unity. Les graphismes et sons provisoires sont générés de manière procédurale."
+  },
+  {
+   "k": "bestiary.title",
+   "v": "Bestiaire"
+  },
+  {
+   "k": "bestiary.count",
+   "v": "{0}/{1} créatures"
+  },
+  {
+   "k": "bestiary.unknown",
+   "v": "???"
+  },
+  {
+   "k": "bestiary.legend",
+   "v": "??? = pas encore rencontré   ★ = recruté dans l'équipage"
+  },
+  {
+   "k": "pause.title",
+   "v": "Pause"
+  },
+  {
+   "k": "pause.resume",
+   "v": "Reprendre"
+  },
+  {
+   "k": "pause.abandon",
+   "v": "Abandonner l'expédition"
+  },
+  {
+   "k": "levelup.title",
+   "v": "Niveau {0} !"
+  },
+  {
+   "k": "levelup.new",
+   "v": "Nouveau gadget"
+  },
+  {
+   "k": "levelup.level",
+   "v": "Niveau {0}"
+  },
+  {
+   "k": "levelup.evolve",
+   "v": "ÉVOLUTION"
+  },
+  {
+   "k": "levelup.heal",
+   "v": "Rations de campagne"
+  },
+  {
+   "k": "levelup.healdesc",
+   "v": "Rend 30 PV."
+  },
+  {
+   "k": "build.title",
+   "v": "Construire sur cet emplacement"
+  },
+  {
+   "k": "build.brass",
+   "v": "Laiton : {0}"
+  },
+  {
+   "k": "build.cost",
+   "v": "Coût : {0} laiton"
+  },
+  {
+   "k": "build.leave",
+   "v": "Laisser l'emplacement vide"
+  },
+  {
+   "k": "results.victory",
+   "v": "L'expédition triomphe !"
+  },
+  {
+   "k": "results.defeat",
+   "v": "L'expédition est perdue"
+  },
+  {
+   "k": "results.body",
+   "v": "Temps de survie : {0}:{1:00}\nNiveau atteint : {2}\nCréatures vaincues : {3}\nCompagnons recrutés : {4}\nConstructions bâties : {5}\nLaiton collecté : {6}"
+  },
+  {
+   "k": "results.points",
+   "v": "+{0} points de recherche (total {1})"
+  },
+  {
+   "k": "results.continue",
+   "v": "Continuer"
+  },
+  {
+   "k": "hud.level",
+   "v": "NIV {0}"
+  },
+  {
+   "k": "hud.brass",
+   "v": "Laiton {0}"
+  },
+  {
+   "k": "hud.crew",
+   "v": "Équipage {0}/{1}"
+  },
+  {
+   "k": "hud.kills",
+   "v": "Vaincus {0}"
+  },
+  {
+   "k": "hud.recruiting",
+   "v": "Restez dans l'anneau : recrutement de {0}"
+  },
+  {
+   "k": "hud.scrapping",
+   "v": "Équipage complet : démontage pour {0} laiton"
+  },
+  {
+   "k": "hud.surveying",
+   "v": "Arpentage de l'emplacement..."
+  },
+  {
+   "k": "hud.upgrading",
+   "v": "Amélioration de {0} au niv. {1} ({2} laiton)"
+  },
+  {
+   "k": "hud.maxed",
+   "v": "{0} est entièrement amélioré"
+  },
+  {
+   "k": "toast.elite",
+   "v": "Un {0} d'élite approche !"
+  },
+  {
+   "k": "toast.boss",
+   "v": "{0} s'est réveillé !"
+  },
+  {
+   "k": "toast.recruited",
+   "v": "{0} rejoint votre équipage !"
+  },
+  {
+   "k": "toast.scrapped",
+   "v": "Vestige démonté : +{0} laiton"
+  },
+  {
+   "k": "toast.lost",
+   "v": "{0} est tombé"
+  },
+  {
+   "k": "toast.nobrass",
+   "v": "Pas assez de laiton ({0} requis)"
+  },
+  {
+   "k": "toast.destroyed",
+   "v": "{0} détruit"
+  },
+  {
+   "k": "toast.revived",
+   "v": "Second souffle !"
+  },
+  {
+   "k": "toast.achievement",
+   "v": "Succès : {0}"
+  },
+  {
+   "k": "toast.evolved",
+   "v": "Évolution : {0} !"
+  },
+  {
+   "k": "toast.charged",
+   "v": "Synergie ! Les compagnons près d'un mât électrique sont chargés."
+  },
+  {
+   "k": "toast.overclocked",
+   "v": "Synergie ! Les compagnons près d'une tourelle à vapeur sont survoltés."
+  },
+  {
+   "k": "world.hollow_earth.name",
+   "v": "La Terre creuse"
+  },
+  {
+   "k": "world.ocean_depths.name",
+   "v": "Vingt mille lieues de fond"
+  },
+  {
+   "k": "world.martian_invasion.name",
+   "v": "L'invasion martienne"
+  },
+  {
+   "k": "world.lunar_caverns.name",
+   "v": "Les cavernes lunaires"
+  },
+  {
+   "k": "leader.ines_varga.name",
+   "v": "Ines Varga, ingénieure"
+  },
+  {
+   "k": "leader.ines_varga.desc",
+   "v": "Construit 25 % plus vite."
+  },
+  {
+   "k": "leader.otto_brenner.name",
+   "v": "Dr Otto Brenner, naturaliste"
+  },
+  {
+   "k": "leader.otto_brenner.desc",
+   "v": "Recrute 25 % plus vite."
+  },
+  {
+   "k": "leader.mara_holt.name",
+   "v": "Capitaine Mara Holt, aéronaute"
+  },
+  {
+   "k": "leader.mara_holt.desc",
+   "v": "10 % plus rapide, +20 PV max."
+  },
+  {
+   "k": "leader.aurelie_dumont.name",
+   "v": "Pr Aurélie Dumont, géologue"
+  },
+  {
+   "k": "leader.aurelie_dumont.desc",
+   "v": "Commence avec 25 laiton."
+  },
+  {
+   "k": "leader.kasimir_wolde.name",
+   "v": "Kasimir Wolde, physicien de l'éther"
+  },
+  {
+   "k": "leader.kasimir_wolde.desc",
+   "v": "+15 % de dégâts."
+  },
+  {
+   "k": "leader.sefa_okoro.name",
+   "v": "Dr Sefa Okoro, chirurgienne de bord"
+  },
+  {
+   "k": "leader.sefa_okoro.desc",
+   "v": "+1 couchette, +20 % de rayon de collecte."
+  },
+  {
+   "k": "gadget.steam_cannon.name",
+   "v": "Canon à vapeur"
+  },
+  {
+   "k": "gadget.steam_cannon.desc",
+   "v": "Tire des balles de laiton sur l'ennemi le plus proche."
+  },
+  {
+   "k": "gadget.arc_coil.name",
+   "v": "Bobine à arc"
+  },
+  {
+   "k": "gadget.arc_coil.desc",
+   "v": "Des éclairs bondissent entre les ennemis proches."
+  },
+  {
+   "k": "gadget.gyro_blades.name",
+   "v": "Gyrolames"
+  },
+  {
+   "k": "gadget.gyro_blades.desc",
+   "v": "Des lames tournoient autour du chef d'expédition."
+  },
+  {
+   "k": "gadget.mortar.name",
+   "v": "Mortier de campagne"
+  },
+  {
+   "k": "gadget.mortar.desc",
+   "v": "Lance des obus explosifs sur la nuée."
+  },
+  {
+   "k": "gadget.flame_bellows.name",
+   "v": "Soufflet de flammes"
+  },
+  {
+   "k": "gadget.flame_bellows.desc",
+   "v": "Projette un cône de feu dans votre direction."
+  },
+  {
+   "k": "gadget.aether_pulse.name",
+   "v": "Pulsation d'éther"
+  },
+  {
+   "k": "gadget.aether_pulse.desc",
+   "v": "Une aura crépitante qui brûle et ralentit."
+  },
+  {
+   "k": "evolution.steam_cannon.name",
+   "v": "Canon tonnerre"
+  },
+  {
+   "k": "evolution.steam_cannon.desc",
+   "v": "Des canons jumeaux transpercent des rangs entiers."
+  },
+  {
+   "k": "evolution.arc_coil.name",
+   "v": "Bobine tempête"
+  },
+  {
+   "k": "evolution.arc_coil.desc",
+   "v": "Une tempête crépitante bondit à travers la nuée."
+  },
+  {
+   "k": "evolution.gyro_blades.name",
+   "v": "Rotor cyclone"
+  },
+  {
+   "k": "evolution.gyro_blades.desc",
+   "v": "Un mur tourbillonnant de laiton."
+  },
+  {
+   "k": "evolution.mortar.name",
+   "v": "Batterie de siège"
+  },
+  {
+   "k": "evolution.mortar.desc",
+   "v": "Un barrage roulant d'obus."
+  },
+  {
+   "k": "evolution.flame_bellows.name",
+   "v": "Soufflet du dragon"
+  },
+  {
+   "k": "evolution.flame_bellows.desc",
+   "v": "Un torrent de feu rugissant."
+  },
+  {
+   "k": "evolution.aether_pulse.name",
+   "v": "Vortex d'éther"
+  },
+  {
+   "k": "evolution.aether_pulse.desc",
+   "v": "L'air lui-même brûle autour de vous."
+  },
+  {
+   "k": "passive.might.name",
+   "v": "Acier trempé"
+  },
+  {
+   "k": "passive.might.desc",
+   "v": "+10 % de dégâts."
+  },
+  {
+   "k": "passive.haste.name",
+   "v": "Engrenages huilés"
+  },
+  {
+   "k": "passive.haste.desc",
+   "v": "-8 % de temps de recharge."
+  },
+  {
+   "k": "passive.speed.name",
+   "v": "Bottes à ressorts"
+  },
+  {
+   "k": "passive.speed.desc",
+   "v": "+8 % de vitesse."
+  },
+  {
+   "k": "passive.magnet.name",
+   "v": "Magnétite"
+  },
+  {
+   "k": "passive.magnet.desc",
+   "v": "+30 % de rayon d'attraction."
+  },
+  {
+   "k": "passive.plating.name",
+   "v": "Blindage de chaudière"
+  },
+  {
+   "k": "passive.plating.desc",
+   "v": "+15 PV max."
+  },
+  {
+   "k": "passive.area.name",
+   "v": "Gros calibre"
+  },
+  {
+   "k": "passive.area.desc",
+   "v": "+10 % de zone d'effet."
+  },
+  {
+   "k": "passive.engineering.name",
+   "v": "Manuel de poche"
+  },
+  {
+   "k": "passive.engineering.desc",
+   "v": "-10 % de temps de construction."
+  },
+  {
+   "k": "passive.charisma.name",
+   "v": "Langue d'argent"
+  },
+  {
+   "k": "passive.charisma.desc",
+   "v": "-10 % de temps de recrutement."
+  },
+  {
+   "k": "structure.barricade.name",
+   "v": "Barricade"
+  },
+  {
+   "k": "structure.barricade.desc",
+   "v": "Bloque la nuée."
+  },
+  {
+   "k": "structure.steam_turret.name",
+   "v": "Tourelle à vapeur"
+  },
+  {
+   "k": "structure.steam_turret.desc",
+   "v": "Tire sur l'ennemi le plus proche."
+  },
+  {
+   "k": "structure.mine_field.name",
+   "v": "Champ de mines"
+  },
+  {
+   "k": "structure.mine_field.desc",
+   "v": "Explose sous les ennemis, puis se réarme."
+  },
+  {
+   "k": "structure.lightning_mast.name",
+   "v": "Mât électrique"
+  },
+  {
+   "k": "structure.lightning_mast.desc",
+   "v": "Éclair en chaîne sur 4 cibles."
+  },
+  {
+   "k": "structure.lure_beacon.name",
+   "v": "Phare-leurre"
+  },
+  {
+   "k": "structure.lure_beacon.desc",
+   "v": "Attire la nuée vers lui."
+  },
+  {
+   "k": "structure.field_workshop.name",
+   "v": "Atelier de campagne"
+  },
+  {
+   "k": "structure.field_workshop.desc",
+   "v": "Répare les compagnons et le chef."
+  },
+  {
+   "k": "research.hull.name",
+   "v": "Coque renforcée"
+  },
+  {
+   "k": "research.hull.desc",
+   "v": "+10 PV max par niveau."
+  },
+  {
+   "k": "research.munitions.name",
+   "v": "Meilleures munitions"
+  },
+  {
+   "k": "research.munitions.desc",
+   "v": "+5 % de dégâts par niveau."
+  },
+  {
+   "k": "research.gearing.name",
+   "v": "Engrenage fin"
+  },
+  {
+   "k": "research.gearing.desc",
+   "v": "+4 % de vitesse par niveau."
+  },
+  {
+   "k": "research.berths.name",
+   "v": "Couchettes supplémentaires"
+  },
+  {
+   "k": "research.berths.desc",
+   "v": "+1 place d'équipage par niveau."
+  },
+  {
+   "k": "research.supply_crate.name",
+   "v": "Caisse de ravitaillement"
+  },
+  {
+   "k": "research.supply_crate.desc",
+   "v": "+10 laiton au départ par niveau."
+  },
+  {
+   "k": "research.lodestone.name",
+   "v": "Réseau de magnétite"
+  },
+  {
+   "k": "research.lodestone.desc",
+   "v": "+10 % de rayon d'attraction par niveau."
+  },
+  {
+   "k": "research.second_wind.name",
+   "v": "Second souffle"
+  },
+  {
+   "k": "research.second_wind.desc",
+   "v": "Ressuscite une fois par partie avec 50 % des PV."
+  },
+  {
+   "k": "ach.ACH_KILLS_100",
+   "v": "Première salve"
+  },
+  {
+   "k": "ach.ACH_KILLS_1K",
+   "v": "Vapeur et tonnerre"
+  },
+  {
+   "k": "ach.ACH_KILLS_10K",
+   "v": "Dix mille lieues"
+  },
+  {
+   "k": "ach.ACH_KILLS_100K",
+   "v": "Un siècle de vapeur"
+  },
+  {
+   "k": "ach.ACH_RUN_KILLS_1000",
+   "v": "Briseur de nuées"
+  },
+  {
+   "k": "ach.ACH_RUN_SURVIVE_15",
+   "v": "Quinze minutes de gloire"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FIRST",
+   "v": "Nouvelle recrue"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FULL_CREW",
+   "v": "Équipage au complet"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_25",
+   "v": "Ménagerie"
+  },
+  {
+   "k": "ach.ACH_SCRAP_10",
+   "v": "Droit d'épave"
+  },
+  {
+   "k": "ach.ACH_BUILD_FIRST",
+   "v": "Boulonné"
+  },
+  {
+   "k": "ach.ACH_STRUCTURE_MAX",
+   "v": "Surconstruit"
+  },
+  {
+   "k": "ach.ACH_FORTRESS_RUN",
+   "v": "Partie forteresse"
+  },
+  {
+   "k": "ach.ACH_WORLD_HOLLOW_EARTH",
+   "v": "Centre de la Terre"
+  },
+  {
+   "k": "ach.ACH_WORLD_DEEP_SEA",
+   "v": "Vingt mille lieues"
+  },
+  {
+   "k": "ach.ACH_WORLD_MARS",
+   "v": "La Guerre des mondes"
+  },
+  {
+   "k": "ach.ACH_WORLD_MOON",
+   "v": "Alunissage"
+  },
+  {
+   "k": "ach.ACH_WORLDS_ALL",
+   "v": "Autour du monde impossible"
+  },
+  {
+   "k": "ach.ACH_BOSS_FULL_CREW",
+   "v": "Ensemble jusqu'au bout"
+  },
+  {
+   "k": "ach.ACH_LEADER_FIRST_UNLOCK",
+   "v": "Un nouveau visage"
+  },
+  {
+   "k": "ach.ACH_LEADER_ENGINEER",
+   "v": "Fierté de l'ingénieure"
+  },
+  {
+   "k": "ach.ACH_RESEARCH_FIRST",
+   "v": "Financement assuré"
+  },
+  {
+   "k": "ach.ACH_RUNS_50",
+   "v": "Exploratrice chevronnée"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_RECRUIT_ALL",
+   "v": "L'équipage complet"
+  },
+  {
+   "k": "ach.ACH_SYNERGY_EVOLUTION",
+   "v": "Tripode électrique"
+  },
+  {
+   "k": "ach.ACH_EVOLUTION_FIRST",
+   "v": "Évolution accomplie"
+  },
+  {
+   "k": "ach.ACH_LEADERS_UNLOCK_ALL",
+   "v": "Effectif complet"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_10",
+   "v": "Notes de terrain"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_ALL",
+   "v": "Philosophe naturaliste"
+  }
+ ]
+}

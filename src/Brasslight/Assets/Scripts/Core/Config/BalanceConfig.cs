@@ -107,6 +107,13 @@ namespace Vamp.Core.Config
             }
             foreach (var l in leaders)
                 if (GadgetIndex(l.startingGadget) < 0) errors.Add($"leader {l.id}: unknown gadget '{l.startingGadget}'");
+            foreach (var g in gadgets)
+            {
+                if (string.IsNullOrEmpty(g.evolveWithPassive)) continue;
+                bool found = false;
+                foreach (var p in passives) found |= p.id == g.evolveWithPassive;
+                if (!found) errors.Add($"gadget {g.id}: unknown evolution passive '{g.evolveWithPassive}'");
+            }
             if (worlds.Length == 0) errors.Add("no worlds");
             if (leaders.Length == 0) errors.Add("no leaders");
             if (structures.Length < build.choiceCount) errors.Add("fewer structures than build.choiceCount");
@@ -198,6 +205,9 @@ namespace Vamp.Core.Config
                     new LeaderDef { id = "ines_varga", displayName = "Ines Varga, Engineer", description = "Builds 25% faster.", startingGadget = "steam_cannon", buildTimeBonus = 0.25f, sprite = 0 },
                     new LeaderDef { id = "otto_brenner", displayName = "Dr. Otto Brenner, Naturalist", description = "Recruits 25% faster.", startingGadget = "arc_coil", recruitTimeBonus = 0.25f, unlockCost = 40, sprite = 1 },
                     new LeaderDef { id = "mara_holt", displayName = "Captain Mara Holt, Aeronaut", description = "Moves 10% faster, +20 max HP.", startingGadget = "gyro_blades", speedBonus = 0.10f, maxHpBonus = 20f, unlockCost = 80, sprite = 2 },
+                    new LeaderDef { id = "aurelie_dumont", displayName = "Prof. Aurelie Dumont, Geologist", description = "Starts with 25 brass.", startingGadget = "mortar", startingBrass = 25, unlockCost = 120, sprite = 3 },
+                    new LeaderDef { id = "kasimir_wolde", displayName = "Kasimir Wolde, Aether Physicist", description = "+15% damage.", startingGadget = "aether_pulse", mightBonus = 0.15f, unlockCost = 160, sprite = 4 },
+                    new LeaderDef { id = "sefa_okoro", displayName = "Dr. Sefa Okoro, Ship's Surgeon", description = "+1 crew berth, +20% pickup radius.", startingGadget = "flame_bellows", crewBonus = 1, magnetBonus = 0.20f, unlockCost = 200, sprite = 5 },
                 },
                 metaUpgrades = new[]
                 {
@@ -210,8 +220,47 @@ namespace Vamp.Core.Config
                     M("second_wind", "Second Wind", "Revive once per run at 50% HP.", "Revival", 1, 1, 120, 1f),
                 },
             };
+            // Evolutions: max-level gadget + partner passive (design/gdd/game-concept.md, achievements C-01).
+            Evo(c, "steam_cannon", "Thunder Cannon", "Twin barrels that punch through whole ranks.", "might", 2.0f, 0.8f, 2, 1.0f, 2);
+            Evo(c, "arc_coil", "Storm Coil", "A crackling storm leaps across the swarm.", "haste", 1.6f, 0.6f, 4, 1.3f, 0);
+            Evo(c, "gyro_blades", "Cyclone Rotor", "A whirling wall of brass.", "speed", 1.5f, 1.0f, 3, 1.2f, 0);
+            Evo(c, "mortar", "Siege Battery", "A rolling barrage of shells.", "area", 1.4f, 0.8f, 2, 1.5f, 0);
+            Evo(c, "flame_bellows", "Dragon Bellows", "A roaring torrent of fire.", "plating", 1.6f, 0.9f, 0, 1.6f, 0);
+            Evo(c, "aether_pulse", "Aether Vortex", "The air itself burns around you.", "magnet", 2.0f, 0.8f, 0, 1.5f, 0);
+
+            // Ranged enemies and bosses (C-04/C-05).
+            Ranged(c, "glow_moth", 5f, 4f, 5.5f, 1);
+            Ranged(c, "lantern_fish", 4f, 5f, 6.5f, 1);
+            Ranged(c, "heat_ray_walker", 3.5f, 10f, 9f, 1);
+            Ranged(c, "selenite_soldier", 3f, 7f, 8f, 3);
+            foreach (var e in c.enemies)
+            {
+                if (!e.isBoss) continue;
+                e.shootInterval = 3.2f; e.shotDamage = 12f; e.shotSpeed = 6f; e.shotCount = 12; e.shootRange = 16f;
+                e.chargeInterval = 7f; e.chargeSpeedMultiplier = 3.5f;
+            }
             c.Resolve();
             return c;
+        }
+
+        private static void Evo(BalanceConfig c, string gadget, string name, string desc, string passive, float dmg, float cd, int count, float area, int pierce)
+        {
+            foreach (var g in c.gadgets)
+            {
+                if (g.id != gadget) continue;
+                g.evolvedName = name; g.evolvedDescription = desc; g.evolveWithPassive = passive;
+                g.evolvedDamageMultiplier = dmg; g.evolvedCooldownMultiplier = cd; g.evolvedCountBonus = count;
+                g.evolvedAreaMultiplier = area; g.evolvedPierceBonus = pierce;
+            }
+        }
+
+        private static void Ranged(BalanceConfig c, string enemy, float interval, float damage, float speed, int count)
+        {
+            foreach (var e in c.enemies)
+            {
+                if (e.id != enemy) continue;
+                e.shootInterval = interval; e.shotDamage = damage; e.shotSpeed = speed; e.shotCount = count;
+            }
         }
 
         private static EnemyDef E(string id, string name, int sprite, float hp, float speed, float dmg, float radius, int xp,

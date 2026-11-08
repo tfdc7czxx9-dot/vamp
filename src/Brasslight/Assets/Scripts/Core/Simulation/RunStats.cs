@@ -19,6 +19,10 @@ namespace Vamp.Core.Simulation
         public int BrassCollected;
         /// <summary>Damage dealt.</summary>
         public double DamageDealt;
+        /// <summary>Gadget evolutions this run.</summary>
+        public int Evolutions;
+        /// <summary>A crew + structure synergy triggered this run.</summary>
+        public bool SynergyTriggered;
         /// <summary>Boss defeated.</summary>
         public bool BossDefeated;
     }

@@ -29,6 +29,7 @@ namespace Vamp.Core.Meta
             s.unlockedLeaders ??= new List<string>();
             s.recruitedSpecies ??= new List<string>();
             s.achievements ??= new List<string>();
+            s.seenSpecies ??= new List<string>();
             s.settings ??= new SettingsData();
             s.selectedLeader ??= "";
             s.selectedWorld ??= "";
@@ -94,7 +95,7 @@ namespace Vamp.Core.Meta
         public RunModifiers CreateModifiers(int leaderIndex) => RunModifiers.Create(_config, leaderIndex, LevelsArray());
 
         /// <summary>Records a finished run and awards its research points. Returns the points awarded.</summary>
-        public int RecordRun(GameSimulation sim, IEnumerable<int> recruitedDefs = null)
+        public int RecordRun(GameSimulation sim, IEnumerable<int> recruitedDefs = null, IEnumerable<int> seenDefs = null)
         {
             int pts = sim.ResearchPoints;
             Save.researchPoints += pts;
@@ -109,6 +110,12 @@ namespace Vamp.Core.Meta
                 Save.totalVictories++;
                 if (!Save.wonWorlds.Contains(sim.World.id)) Save.wonWorlds.Add(sim.World.id);
             }
+            if (seenDefs != null)
+                foreach (int d in seenDefs)
+                {
+                    string id = _config.enemies[d].id;
+                    if (!Save.seenSpecies.Contains(id)) Save.seenSpecies.Add(id);
+                }
             if (recruitedDefs != null)
                 foreach (int d in recruitedDefs)
                 {

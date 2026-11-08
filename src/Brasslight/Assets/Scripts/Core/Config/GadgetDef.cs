@@ -35,6 +35,23 @@ namespace Vamp.Core.Config
         /// <summary>Cooldown reduction per level above 1.</summary>
         public float cooldownPerLevel = 0.04f;
 
+        /// <summary>Name of the evolved form (empty = cannot evolve).</summary>
+        public string evolvedName;
+        /// <summary>Description of the evolved form.</summary>
+        public string evolvedDescription;
+        /// <summary>Passive id that must be owned (level ≥ 1) to evolve at max level.</summary>
+        public string evolveWithPassive;
+        /// <summary>Damage multiplier when evolved.</summary>
+        public float evolvedDamageMultiplier = 1.5f;
+        /// <summary>Cooldown multiplier when evolved.</summary>
+        public float evolvedCooldownMultiplier = 0.8f;
+        /// <summary>Extra count when evolved.</summary>
+        public int evolvedCountBonus = 1;
+        /// <summary>Area multiplier when evolved.</summary>
+        public float evolvedAreaMultiplier = 1.25f;
+        /// <summary>Extra pierce when evolved.</summary>
+        public int evolvedPierceBonus;
+
         /// <summary>Resolved kind (set by <see cref="BalanceConfig.Resolve"/>).</summary>
         [NonSerialized] public GadgetKind Kind;
     }

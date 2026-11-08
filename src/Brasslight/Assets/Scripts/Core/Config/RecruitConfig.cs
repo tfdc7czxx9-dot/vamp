@@ -32,6 +32,10 @@ namespace Vamp.Core.Config
         public float companionSpeedMultiplier = 1.25f;
         /// <summary>Companion damage bonus per player level.</summary>
         public float companionDamagePerPlayerLevel = 0.05f;
+        /// <summary>Synergy: companions within a Lightning Mast's range chain their attacks to this many extra targets.</summary>
+        public int chargedChainTargets = 2;
+        /// <summary>Synergy: companions within a Steam Turret's range attack this much faster (fraction).</summary>
+        public float overclockAttackSpeed = 0.5f;
         /// <summary>Base HP used for companion HP when the elite HP would be tiny.</summary>
         public float companionMinHp = 40f;
     }

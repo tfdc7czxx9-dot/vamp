@@ -9,6 +9,8 @@ namespace Vamp.Core.Simulation
         public int Level;
         /// <summary>Time until next activation.</summary>
         public float Timer;
+        /// <summary>True once evolved.</summary>
+        public bool Evolved;
         /// <summary>Orbit angle (blades), radians.</summary>
         public float Angle;
     }

@@ -73,6 +73,16 @@ namespace Vamp.Core.Simulation
             }
         }
 
+        /// <summary>True if a gadget is at max level, not evolved, and its partner passive is owned.</summary>
+        public bool CanEvolve(in OwnedGadget g)
+        {
+            var d = Config.gadgets[g.Def];
+            if (g.Evolved || g.Level < Config.player.maxGadgetLevel || string.IsNullOrEmpty(d.evolveWithPassive)) return false;
+            for (int i = 0; i < Config.passives.Length; i++)
+                if (Config.passives[i].id == d.evolveWithPassive) return PassiveLevels[i] > 0;
+            return false;
+        }
+
         /// <summary>Level of an owned gadget, or 0.</summary>
         public int GadgetLevel(int def)
         {
@@ -89,7 +99,11 @@ namespace Vamp.Core.Simulation
         private void BuildLevelUpOffers()
         {
             _candidates.Clear();
+            LevelUpOffers.Clear();
             var p = Config.player;
+            // Evolutions are always offered when available (guaranteed slot).
+            for (int i = 0; i < Gadgets.Count && LevelUpOffers.Count < System.Math.Max(1, p.levelUpChoices); i++)
+                if (CanEvolve(Gadgets[i])) LevelUpOffers.Add(new UpgradeOption { Kind = UpgradeOptionKind.Evolve, Index = Gadgets[i].Def, NextLevel = Gadgets[i].Level });
             for (int i = 0; i < Config.gadgets.Length; i++)
             {
                 int lvl = GadgetLevel(i);
@@ -102,7 +116,6 @@ namespace Vamp.Core.Simulation
                 if (PassiveLevels[i] < Config.passives[i].maxLevel)
                     _candidates.Add(new UpgradeOption { Kind = UpgradeOptionKind.Passive, Index = i, NextLevel = PassiveLevels[i] + 1 });
 
-            LevelUpOffers.Clear();
             int want = System.Math.Max(1, p.levelUpChoices);
             while (LevelUpOffers.Count < want && _candidates.Count > 0)
             {
@@ -137,6 +150,18 @@ namespace Vamp.Core.Simulation
                     break;
                 case UpgradeOptionKind.Passive:
                     PassiveLevels[o.Index]++;
+                    break;
+                case UpgradeOptionKind.Evolve:
+                    for (int i = 0; i < Gadgets.Count; i++)
+                    {
+                        if (Gadgets[i].Def != o.Index) continue;
+                        var g = Gadgets[i];
+                        g.Evolved = true;
+                        Gadgets[i] = g;
+                        Stats.Evolutions++;
+                        Emit(SimEventType.Evolved, Player.Pos, default, 0f, o.Index);
+                        break;
+                    }
                     break;
                 case UpgradeOptionKind.Heal:
                     Player.Hp = MathF.Min(Player.MaxHp, Player.Hp + Config.player.fallbackHeal);

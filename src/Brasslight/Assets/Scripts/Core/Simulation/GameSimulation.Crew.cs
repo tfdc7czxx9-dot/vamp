@@ -90,6 +90,36 @@ namespace Vamp.Core.Simulation
             }
         }
 
+        /// <summary>True if the point is within range of an active structure of the given kind.</summary>
+        public bool NearStructure(Vec2 pos, StructureKind kind)
+        {
+            for (int i = 0; i < Structures.Length; i++)
+            {
+                ref var s = ref Structures[i];
+                if (!s.Active) continue;
+                var d = Config.structures[s.Def];
+                if (d.Kind == kind && Vec2.SqrDistance(pos, s.Pos) <= d.range * d.range) return true;
+            }
+            return false;
+        }
+
+        private void ChainFrom(int first, Vec2 from, int extra, float damage)
+        {
+            _chainHit[0] = first;
+            int hits = 1;
+            extra = System.Math.Min(extra, _chainHit.Length - 1);
+            for (int k = 0; k < extra; k++)
+            {
+                int t = NearestUnhit(from, 4f, hits);
+                if (t < 0) return;
+                _chainHit[hits++] = t;
+                Vec2 to = Enemies[t].Pos;
+                Emit(SimEventType.Lightning, from, to, damage);
+                DamageEnemy(t, damage);
+                from = to;
+            }
+        }
+
         /// <summary>Current attack damage of a companion including the per-level bonus.</summary>
         public float CompanionDamage(in Companion c) =>
             c.Damage * (1f + Config.recruit.companionDamagePerPlayerLevel * (Player.Level - 1)) * MightMultiplier;
@@ -128,9 +158,19 @@ namespace Vamp.Core.Simulation
                 if (comp.AttackTimer > 0f) continue;
                 int target = NearestEnemy(comp.Pos, rc.companionAttackRange);
                 if (target < 0) continue;
-                comp.AttackTimer = rc.companionAttackInterval;
-                Emit(SimEventType.CompanionAttack, comp.Pos, Enemies[target].Pos, 0f, comp.Def);
-                DamageEnemy(target, CompanionDamage(comp));
+                bool charged = NearStructure(comp.Pos, StructureKind.LightningMast);
+                bool overclocked = NearStructure(comp.Pos, StructureKind.SteamTurret);
+                comp.AttackTimer = rc.companionAttackInterval / (overclocked ? 1f + rc.overclockAttackSpeed : 1f);
+                if ((charged || overclocked) && !Stats.SynergyTriggered)
+                {
+                    Stats.SynergyTriggered = true;
+                    Emit(SimEventType.Synergy, comp.Pos, default, charged ? 1f : 2f, comp.Def);
+                }
+                Vec2 targetPos = Enemies[target].Pos;
+                float damage = CompanionDamage(comp);
+                Emit(SimEventType.CompanionAttack, comp.Pos, targetPos, charged ? 1f : 0f, comp.Def);
+                DamageEnemy(target, damage);
+                if (charged) ChainFrom(target, targetPos, rc.chargedChainTargets, damage * 0.6f);
                 if (IsOver) return;
             }
         }

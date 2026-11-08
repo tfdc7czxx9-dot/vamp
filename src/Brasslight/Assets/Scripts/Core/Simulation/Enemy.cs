@@ -33,6 +33,14 @@ namespace Vamp.Core.Simulation
         public float Flash;
         /// <summary>Remaining slow duration.</summary>
         public float Slow;
+        /// <summary>Time until the next ranged volley.</summary>
+        public float ShootTimer;
+        /// <summary>Time until the next charge.</summary>
+        public float ChargeTimer;
+        /// <summary>Remaining charge duration (moving fast in a fixed direction).</summary>
+        public float Charging;
+        /// <summary>Locked charge direction.</summary>
+        public Vec2 ChargeDir;
         /// <summary>Per-enemy cooldown for orbiting blade hits.</summary>
         public float BladeCooldown;
     }

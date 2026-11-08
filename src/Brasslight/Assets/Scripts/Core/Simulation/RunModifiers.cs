@@ -38,6 +38,10 @@ namespace Vamp.Core.Simulation
                 m.Speed += l.speedBonus;
                 m.BuildTime += l.buildTimeBonus;
                 m.RecruitTime += l.recruitTimeBonus;
+                m.Might += l.mightBonus;
+                m.Magnet += l.magnetBonus;
+                m.StartingBrass += l.startingBrass;
+                m.CrewBonus += l.crewBonus;
             }
             for (int i = 0; i < config.metaUpgrades.Length; i++)
             {

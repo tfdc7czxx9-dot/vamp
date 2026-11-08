@@ -36,13 +36,29 @@ namespace Vamp.Core.Simulation
                 avoid += d * w;
             }
 
+            // Dodge hostile shots (a human reads the telegraph and sidesteps).
+            for (int i = 0; i < sim.Projectiles.Length; i++)
+            {
+                ref var pr = ref sim.Projectiles[i];
+                if (!pr.Active || pr.Kind != ProjectileKind.EnemyShot) continue;
+                Vec2 d = p - pr.Pos;
+                float sq = d.SqrMagnitude;
+                if (sq > 9f || sq < 1e-6f) continue;
+                // Move perpendicular to the shot's travel direction.
+                Vec2 v = pr.Vel.Normalized;
+                Vec2 side = new Vec2(-v.Y, v.X);
+                if (Vec2.Dot(side, d) < 0f) side = -side;
+                avoid += side * (2f / sq);
+            }
+
             Vec2 goal = Goal(sim, out bool hold);
             Vec2 toGoal = goal - p;
             float goalDist = toGoal.Magnitude;
             Vec2 seek = goalDist > 0.3f ? toGoal / goalDist : Vec2.Zero;
 
             // Stand still on a goal (remnant/plot) unless enemies press in.
-            if (hold && goalDist < 0.6f && close < 4) return Vec2.Zero;
+            bool healthy = sim.Player.Hp > sim.Player.MaxHp * 0.5f;
+            if (hold && goalDist < 0.6f && (close < 4 || healthy)) return Vec2.Zero;
 
             _wanderAngle += 0.01f;
             Vec2 wander = Vec2.FromAngle(_wanderAngle) * 0.35f;
