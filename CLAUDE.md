@@ -2,7 +2,8 @@
 
 Indie game development managed through 55 coordinated Claude Code subagents.
 
-**Project**: VAMP (working title) — a vampire-themed survivor-like roguelite.
+**Project**: IMPOSSIBLE VOYAGES (working title, codename VAMP) — a Victorian retro-sci-fi survivor-like roguelite in public-domain Jules Verne / H. G. Wells worlds, with two signature mechanics: recruiting defeated elites into your crew, and building structures on the battlefield.
+**IP rules**: `design/ip-guidelines.md`
 **Targets**: Steam (Windows/macOS/Linux + Steam Deck), Google Play (Android), Apple App Store (iOS).
 **Business model**: Premium (one-time purchase) on every store — no ads, no IAP.
 **Concept**: `design/gdd/game-concept.md` · **Roadmap**: `production/roadmap-to-launch.md`

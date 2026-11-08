@@ -16,20 +16,20 @@
 | # | Task | Agent(s) | Skill | Status |
 |---|------|----------|-------|--------|
 | 0.1 | Engine & tech preferences configured | technical-director | `/setup-engine` | ✅ done |
-| 0.2 | Game concept draft | creative-director, game-designer | `/brainstorm` | ✅ draft — owner review |
+| 0.2 | Game concept draft (v0.2: Verne/Wells setting, Recruit + Engineering) | creative-director, game-designer | `/brainstorm` | ✅ draft — owner review |
 | 0.3 | Store publishing agents created | — | — | ✅ done |
 | 0.4 | Create Unity 6.3 LTS project (URP 2D template) in Unity Hub, commit with Git LFS | **owner** + unity-specialist | — | ⬜ |
 | 0.5 | Test framework + CI (GameCI: tests, Win/Linux/macOS/Android builds; iOS on macOS runner) | devops-engineer | `/test-setup` | ⬜ |
 | 0.6 | Accounts: Steamworks (Steam Direct fee), Google Play Console, Apple Developer Program | **owner**, checklists by publishing specialists | — | ⬜ |
-| 0.7 | Title trademark search, business/tax questions for Steuerberater | legal-compliance-specialist | — | ⬜ |
+| 0.7 | Title trademark search, public-domain check of sources (`design/ip-guidelines.md`), business/tax questions for Steuerberater | legal-compliance-specialist | — | ⬜ |
 
 ## Phase 1 — Prototype (validate the hook)
 
 | # | Task | Agent(s) | Skill |
 |---|------|----------|-------|
-| 1.1 | Prototype: movement, auto-attack, horde, Dawn Gamble | prototyper, unity-specialist | `/prototype` |
+| 1.1 | Prototype: movement, auto-attack, horde, Recruit (companions) + Engineering (build plots) | prototyper, unity-specialist | `/prototype` |
 | 1.2 | Perf spike: 500 enemies @60 fps on Steam Deck + mid Android | performance-analyst, mobile-platform-programmer | `/perf-profile` |
-| 1.3 | Playtest the Dawn Gamble (is the decision fun?) | qa-lead, game-designer | `/playtest-report` |
+| 1.3 | Playtest Recruit + Engineering (are both fun? readable on a phone?) | qa-lead, game-designer | `/playtest-report` |
 | 1.4 | Go / pivot decision | creative-director, producer | `/gate-check` |
 
 ## Phase 2 — Pre-production
@@ -51,7 +51,7 @@ Platform layer (`IPlatformServices` + Null implementation) is built here so stor
 
 ## Phase 4 — Production (content to 1.0 scope)
 
-- Content: maps, vampires, powers, enemies, bosses (`/team-combat`, `/team-level`, `/team-audio`)
+- Content: worlds, leaders, gadgets, enemies, recruitable elites, structures, bosses (`/team-combat`, `/team-level`, `/team-audio`)
 - Localization EN + DE (`/localize`, localization-lead)
 - Platform integration, in parallel:
   - **Steam**: Steamworks.NET, achievements, Steam Cloud, Steam Input, Deck checks — steam-publishing-specialist

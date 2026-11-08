@@ -31,7 +31,7 @@
 - **Signals/Events**: C# events / `Action` named as past-tense verbs prefixed with `On` for handlers (`EnemyKilled` event, `OnEnemyKilled` handler)
 - **Files**: one public type per file, file name = type name (`EnemySpawner.cs`)
 - **Scenes/Prefabs**: PascalCase (`Run_Graveyard.unity`, `Enemy_Villager.prefab`)
-- **ScriptableObject assets**: `SO_` prefix not used — folder by type instead (`Data/Weapons/BloodWhip.asset`)
+- **ScriptableObject assets**: `SO_` prefix not used — folder by type instead (`Data/Gadgets/SteamCannon.asset`)
 - **Constants**: PascalCase `const` / `static readonly`
 - **Namespaces**: `Vamp.<Layer>.<System>` (e.g. `Vamp.Gameplay.Weapons`)
 
