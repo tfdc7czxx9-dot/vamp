@@ -1,0 +1,384 @@
+{
+ "entries": [
+  {
+   "k": "subtitle",
+   "v": "Extraordinary Expeditions"
+  },
+  {
+   "k": "title.footer",
+   "v": "Inspired by the novels of Jules Verne and H. G. Wells"
+  },
+  {
+   "k": "menu.start",
+   "v": "Start Expedition"
+  },
+  {
+   "k": "menu.research",
+   "v": "Research"
+  },
+  {
+   "k": "menu.options",
+   "v": "Options"
+  },
+  {
+   "k": "menu.credits",
+   "v": "Credits"
+  },
+  {
+   "k": "menu.quit",
+   "v": "Quit"
+  },
+  {
+   "k": "menu.back",
+   "v": "Back"
+  },
+  {
+   "k": "menu.points",
+   "v": "{0} research points"
+  },
+  {
+   "k": "expedition.title",
+   "v": "Plan the Expedition"
+  },
+  {
+   "k": "expedition.locked",
+   "v": "Locked: defeat the boss of {0}"
+  },
+  {
+   "k": "expedition.leaderlocked",
+   "v": "Locked: {0} research points"
+  },
+  {
+   "k": "expedition.unlock",
+   "v": "Hire for {0} research points"
+  },
+  {
+   "k": "expedition.begin",
+   "v": "Begin Expedition"
+  },
+  {
+   "k": "research.title",
+   "v": "Research"
+  },
+  {
+   "k": "research.max",
+   "v": "Fully researched"
+  },
+  {
+   "k": "research.cost",
+   "v": "Cost: {0}"
+  },
+  {
+   "k": "options.title",
+   "v": "Options"
+  },
+  {
+   "k": "options.music",
+   "v": "Music volume: {0}%"
+  },
+  {
+   "k": "options.sfx",
+   "v": "Effects volume: {0}%"
+  },
+  {
+   "k": "options.quality",
+   "v": "Graphics quality: {0}"
+  },
+  {
+   "k": "options.auto",
+   "v": "Automatic"
+  },
+  {
+   "k": "options.dof",
+   "v": "Depth of field: {0}"
+  },
+  {
+   "k": "options.shake",
+   "v": "Screen shake: {0}"
+  },
+  {
+   "k": "options.numbers",
+   "v": "Damage numbers: {0}"
+  },
+  {
+   "k": "options.language",
+   "v": "Language: {0}"
+  },
+  {
+   "k": "options.on",
+   "v": "On"
+  },
+  {
+   "k": "options.off",
+   "v": "Off"
+  },
+  {
+   "k": "quality.Low",
+   "v": "Low"
+  },
+  {
+   "k": "quality.Medium",
+   "v": "Medium"
+  },
+  {
+   "k": "quality.High",
+   "v": "High"
+  },
+  {
+   "k": "quality.Ultra",
+   "v": "Ultra"
+  },
+  {
+   "k": "language.en",
+   "v": "English"
+  },
+  {
+   "k": "language.de",
+   "v": "Deutsch"
+  },
+  {
+   "k": "credits.title",
+   "v": "Credits"
+  },
+  {
+   "k": "credits.body",
+   "v": "BRASSLIGHT\n\nWorlds inspired by the public-domain novels of Jules Verne\n(Journey to the Centre of the Earth, Twenty Thousand Leagues Under the Seas)\nand H. G. Wells (The War of the Worlds, The First Men in the Moon).\n\nAll characters, art, music and designs in this game are original.\nMade with Unity. Placeholder art and audio are generated procedurally."
+  },
+  {
+   "k": "pause.title",
+   "v": "Paused"
+  },
+  {
+   "k": "pause.resume",
+   "v": "Resume"
+  },
+  {
+   "k": "pause.abandon",
+   "v": "Abandon expedition"
+  },
+  {
+   "k": "levelup.title",
+   "v": "Level {0}!"
+  },
+  {
+   "k": "levelup.new",
+   "v": "New gadget"
+  },
+  {
+   "k": "levelup.level",
+   "v": "Level {0}"
+  },
+  {
+   "k": "levelup.heal",
+   "v": "Field Rations"
+  },
+  {
+   "k": "levelup.healdesc",
+   "v": "Restore 30 HP."
+  },
+  {
+   "k": "build.title",
+   "v": "Build on this plot"
+  },
+  {
+   "k": "build.brass",
+   "v": "Brass: {0}"
+  },
+  {
+   "k": "build.cost",
+   "v": "Cost: {0} brass"
+  },
+  {
+   "k": "build.leave",
+   "v": "Leave the plot empty"
+  },
+  {
+   "k": "results.victory",
+   "v": "Expedition triumphant!"
+  },
+  {
+   "k": "results.defeat",
+   "v": "The expedition is lost"
+  },
+  {
+   "k": "results.body",
+   "v": "Time survived: {0}:{1:00}\nLevel reached: {2}\nCreatures defeated: {3}\nCompanions recruited: {4}\nStructures built: {5}\nBrass collected: {6}"
+  },
+  {
+   "k": "results.points",
+   "v": "+{0} research points (total {1})"
+  },
+  {
+   "k": "results.continue",
+   "v": "Continue"
+  },
+  {
+   "k": "hud.level",
+   "v": "LV {0}"
+  },
+  {
+   "k": "hud.brass",
+   "v": "Brass {0}"
+  },
+  {
+   "k": "hud.crew",
+   "v": "Crew {0}/{1}"
+  },
+  {
+   "k": "hud.kills",
+   "v": "Defeated {0}"
+  },
+  {
+   "k": "hud.recruiting",
+   "v": "Hold the ring: recruiting {0}"
+  },
+  {
+   "k": "hud.scrapping",
+   "v": "Crew full: scrapping for {0} brass"
+  },
+  {
+   "k": "hud.surveying",
+   "v": "Surveying build plot..."
+  },
+  {
+   "k": "hud.upgrading",
+   "v": "Upgrading {0} to Lv {1} ({2} brass)"
+  },
+  {
+   "k": "hud.maxed",
+   "v": "{0} is fully upgraded"
+  },
+  {
+   "k": "toast.elite",
+   "v": "An elite {0} approaches!"
+  },
+  {
+   "k": "toast.boss",
+   "v": "{0} has awoken!"
+  },
+  {
+   "k": "toast.recruited",
+   "v": "{0} joins your crew!"
+  },
+  {
+   "k": "toast.scrapped",
+   "v": "Remnant scrapped: +{0} brass"
+  },
+  {
+   "k": "toast.lost",
+   "v": "{0} has fallen"
+  },
+  {
+   "k": "toast.nobrass",
+   "v": "Not enough brass ({0} needed)"
+  },
+  {
+   "k": "toast.destroyed",
+   "v": "{0} destroyed"
+  },
+  {
+   "k": "toast.revived",
+   "v": "Second wind!"
+  },
+  {
+   "k": "toast.achievement",
+   "v": "Achievement: {0}"
+  },
+  {
+   "k": "ach.ACH_KILLS_100",
+   "v": "First Volley"
+  },
+  {
+   "k": "ach.ACH_KILLS_1K",
+   "v": "Steam and Thunder"
+  },
+  {
+   "k": "ach.ACH_KILLS_10K",
+   "v": "Ten Thousand Leagues"
+  },
+  {
+   "k": "ach.ACH_KILLS_100K",
+   "v": "A Century of Steam"
+  },
+  {
+   "k": "ach.ACH_RUN_KILLS_1000",
+   "v": "Swarm Breaker"
+  },
+  {
+   "k": "ach.ACH_RUN_SURVIVE_15",
+   "v": "Fifteen Minutes of Fame"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FIRST",
+   "v": "Fresh Recruit"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FULL_CREW",
+   "v": "Full Complement"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_25",
+   "v": "Menagerie"
+  },
+  {
+   "k": "ach.ACH_SCRAP_10",
+   "v": "Salvage Rights"
+  },
+  {
+   "k": "ach.ACH_BUILD_FIRST",
+   "v": "Bolted Together"
+  },
+  {
+   "k": "ach.ACH_STRUCTURE_MAX",
+   "v": "Overbuilt"
+  },
+  {
+   "k": "ach.ACH_FORTRESS_RUN",
+   "v": "Fortress Run"
+  },
+  {
+   "k": "ach.ACH_WORLD_HOLLOW_EARTH",
+   "v": "Centre of the Earth"
+  },
+  {
+   "k": "ach.ACH_WORLD_DEEP_SEA",
+   "v": "Twenty Thousand Leagues"
+  },
+  {
+   "k": "ach.ACH_WORLD_MARS",
+   "v": "War of the Worlds"
+  },
+  {
+   "k": "ach.ACH_WORLD_MOON",
+   "v": "Lunar Landing"
+  },
+  {
+   "k": "ach.ACH_WORLDS_ALL",
+   "v": "Around the Impossible World"
+  },
+  {
+   "k": "ach.ACH_BOSS_FULL_CREW",
+   "v": "Together to the End"
+  },
+  {
+   "k": "ach.ACH_LEADER_FIRST_UNLOCK",
+   "v": "A New Face in the Party"
+  },
+  {
+   "k": "ach.ACH_LEADER_ENGINEER",
+   "v": "Engineer's Pride"
+  },
+  {
+   "k": "ach.ACH_RESEARCH_FIRST",
+   "v": "Funding Secured"
+  },
+  {
+   "k": "ach.ACH_RUNS_50",
+   "v": "Seasoned Explorer"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_RECRUIT_ALL",
+   "v": "The Complete Crew"
+  }
+ ]
+}

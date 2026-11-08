@@ -18,6 +18,8 @@ namespace Vamp.Core.Config
         public string bossId;
         /// <summary>World that must be won to unlock this one (empty = unlocked).</summary>
         public string unlockedByWorld;
+        /// <summary>Achievement API name unlocked by defeating this world's boss.</summary>
+        public string achievement;
         /// <summary>Ground colour (hex RGB) used by the presentation layer.</summary>
         public string groundColor = "#2E4A4A";
         /// <summary>Accent / light colour (hex RGB).</summary>

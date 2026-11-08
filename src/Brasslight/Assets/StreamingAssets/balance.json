@@ -719,6 +719,7 @@
       ],
       "bossId": "magma_leviathan",
       "unlockedByWorld": null,
+      "achievement": "ACH_WORLD_HOLLOW_EARTH",
       "groundColor": "#2B4A47",
       "accentColor": "#FF8A3D",
       "fogColor": "#0E1A1C"
@@ -736,6 +737,7 @@
       ],
       "bossId": "maelstrom_matriarch",
       "unlockedByWorld": "hollow_earth",
+      "achievement": "ACH_WORLD_DEEP_SEA",
       "groundColor": "#1D3550",
       "accentColor": "#5FE1FF",
       "fogColor": "#06121F"
@@ -753,6 +755,7 @@
       ],
       "bossId": "great_engine",
       "unlockedByWorld": "ocean_depths",
+      "achievement": "ACH_WORLD_MARS",
       "groundColor": "#4A3B36",
       "accentColor": "#FF3B30",
       "fogColor": "#1A1210"
@@ -769,6 +772,7 @@
       ],
       "bossId": "grand_lunar",
       "unlockedByWorld": "martian_invasion",
+      "achievement": "ACH_WORLD_MOON",
       "groundColor": "#3B3A55",
       "accentColor": "#B9A8FF",
       "fogColor": "#0D0C1A"

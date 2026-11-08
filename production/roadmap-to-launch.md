@@ -1,4 +1,4 @@
-# Roadmap to Launch — VAMP
+# Roadmap to Launch — BRASSLIGHT (codename VAMP)
 
 > Living document. Owner: `producer`. Store-specific dates are maintained by the
 > publishing specialists. Store rules (fees, tester counts, API levels, SDK
@@ -18,10 +18,16 @@
 | 0.1 | Engine & tech preferences configured | technical-director | `/setup-engine` | ✅ done |
 | 0.2 | Game concept draft (v0.2: Verne/Wells setting, Recruit + Engineering) | creative-director, game-designer | `/brainstorm` | ✅ draft — owner review |
 | 0.3 | Store publishing agents created | — | — | ✅ done |
-| 0.4 | Create Unity 6.3 LTS project (**Universal 3D** template, see ADR-0002) in Unity Hub, commit with Git LFS | **owner** + unity-specialist | — | ⬜ |
-| 0.5 | Test framework + CI (GameCI: tests, Win/Linux/macOS/Android builds; iOS on macOS runner) | devops-engineer | `/test-setup` | ⬜ |
+| 0.4 | Create Unity 6.3 LTS project (**Universal 3D** template) and run Brasslight > Setup Project — steps in `docs/BUILDING.md` | **owner** + unity-specialist | — | ⬜ (code ready) |
+| 0.5 | Test framework + CI (GameCI: tests, Win/Linux/macOS/Android builds; iOS on macOS runner) | devops-engineer | `/test-setup` | ✅ workflows in `.github/workflows` (Unity part activates with secrets) |
 | 0.6 | Accounts: Steamworks (Steam Direct fee), Google Play Console, Apple Developer Program | **owner**, checklists by publishing specialists | — | ⬜ |
 | 0.7 | Title trademark search, public-domain check of sources (`design/ip-guidelines.md`), business/tax questions for Steuerberater | legal-compliance-specialist | — | ⬜ |
+
+> **Status 2026-11-08**: title BRASSLIGHT chosen; the playable vertical slice code exists ahead of
+> schedule (Phases 1 and 3 overlap): full simulation in `Vamp.Core`, Unity presentation in `Vamp.Game`
+> with placeholder procedural art/audio, 4 worlds of data, 3 leaders, research, achievements, EN/DE.
+> Store, legal and marketing drafts exist under `production/`. Open items are tracked in
+> `docs/tech-debt-register.md`.
 
 ## Phase 1 — Prototype (validate the hook)
 

@@ -1,0 +1,30 @@
+name: Core tests
+
+# Runs the engine-independent gameplay tests (Vamp.Core + Unity EditMode test sources compiled with .NET)
+# and a static compile check of the Unity presentation layer. No Unity license needed.
+on:
+  push:
+  pull_request:
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Gameplay unit + integration tests
+        run: dotnet test tests/dotnet/Brasslight.Core.Tests.csproj --logger "console;verbosity=normal"
+      - name: Unity layer compile check
+        run: dotnet build tests/unity-compile-check/UnityCompileCheck.csproj -warnaserror:CS1717
+      - name: Validate localisation tables
+        run: |
+          python3 - <<'PY'
+          import json
+          en = {e["k"] for e in json.load(open("src/Brasslight/Assets/StreamingAssets/loc/en.json", encoding="utf-8"))["entries"]}
+          de = {e["k"] for e in json.load(open("src/Brasslight/Assets/StreamingAssets/loc/de.json", encoding="utf-8"))["entries"]}
+          missing = sorted(en - de)
+          assert not missing, f"keys missing in de.json: {missing}"
+          print(f"en={len(en)} de={len(de)} OK")
+          PY

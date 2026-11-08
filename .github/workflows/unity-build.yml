@@ -1,0 +1,102 @@
+name: Unity tests & builds
+
+# GameCI pipeline. Activates only when the Unity project exists (src/Brasslight/ProjectSettings) and the
+# UNITY_LICENSE / UNITY_EMAIL / UNITY_PASSWORD secrets are configured. See docs/BUILDING.md.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  PROJECT_PATH: src/Brasslight
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.ready.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: ready
+        env:
+          HAS_LICENSE: ${{ secrets.UNITY_LICENSE != '' }}
+        run: |
+          if [ -f "$PROJECT_PATH/ProjectSettings/ProjectVersion.txt" ] && [ "$HAS_LICENSE" = "true" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Unity CI skipped: create the Unity project and add the UNITY_LICENSE secret (docs/BUILDING.md)."
+          fi
+
+  test:
+    needs: check
+    if: needs.check.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          testMode: editmode
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform: [StandaloneWindows64, StandaloneLinux64, Android]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          versioning: Semantic
+          androidExportType: androidAppBundle
+          androidKeystoreName: brasslight.keystore
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Brasslight-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+
+  build-apple:
+    needs: test
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform: [StandaloneOSX, iOS]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          versioning: Semantic
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Brasslight-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}

@@ -51,6 +51,8 @@
 - **Framework**: Unity Test Framework (NUnit) — EditMode for pure logic, PlayMode for integration
 - **Minimum Coverage**: 80% of pure-logic assemblies (`Vamp.Core`, `Vamp.Gameplay.Rules`)
 - **Required Tests**: Balance formulas, gameplay systems, save/load, platform service fallbacks (offline Steam, no Game Center)
+- **How to run**: `dotnet test tests/dotnet/Brasslight.Core.Tests.csproj` (same sources as the Unity EditMode tests), `dotnet build tests/unity-compile-check/UnityCompileCheck.csproj` (Unity layer compile check). Details: `docs/BUILDING.md`
+- **Architecture rule**: gameplay rules live in `Vamp.Core` (no `UnityEngine`); `Vamp.Game` only renders, reads input and plays audio
 
 ## Forbidden Patterns
 
@@ -61,7 +63,8 @@
 - Platform SDK calls outside the `Vamp.Platform` abstraction layer (no `Steamworks.*` or GameKit calls from gameplay code)
 - Ads SDKs, IAP, analytics that collect personal data — the game is premium and data-minimal
 - Instantiating/destroying per frame in hot paths (use pooling)
-- One SpriteRenderer GameObject per swarm enemy (use the instanced `ISwarmRenderer`)
+- One SpriteRenderer GameObject per swarm enemy (use the instanced `SpriteBatcher`)
+- New IMGUI screens: the current IMGUI HUD is a placeholder to be replaced by UI Toolkit (TD-04 in `docs/tech-debt-register.md`)
 
 ## Allowed Libraries / Addons
 

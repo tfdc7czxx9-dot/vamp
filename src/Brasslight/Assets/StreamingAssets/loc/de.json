@@ -1,0 +1,640 @@
+{
+ "entries": [
+  {
+   "k": "subtitle",
+   "v": "Außergewöhnliche Expeditionen"
+  },
+  {
+   "k": "title.footer",
+   "v": "Inspiriert von den Romanen von Jules Verne und H. G. Wells"
+  },
+  {
+   "k": "menu.start",
+   "v": "Expedition starten"
+  },
+  {
+   "k": "menu.research",
+   "v": "Forschung"
+  },
+  {
+   "k": "menu.options",
+   "v": "Optionen"
+  },
+  {
+   "k": "menu.credits",
+   "v": "Mitwirkende"
+  },
+  {
+   "k": "menu.quit",
+   "v": "Beenden"
+  },
+  {
+   "k": "menu.back",
+   "v": "Zurück"
+  },
+  {
+   "k": "menu.points",
+   "v": "{0} Forschungspunkte"
+  },
+  {
+   "k": "expedition.title",
+   "v": "Expedition planen"
+  },
+  {
+   "k": "expedition.locked",
+   "v": "Gesperrt: Besiege den Boss von {0}"
+  },
+  {
+   "k": "expedition.leaderlocked",
+   "v": "Gesperrt: {0} Forschungspunkte"
+  },
+  {
+   "k": "expedition.unlock",
+   "v": "Für {0} Forschungspunkte anheuern"
+  },
+  {
+   "k": "expedition.begin",
+   "v": "Expedition beginnen"
+  },
+  {
+   "k": "research.title",
+   "v": "Forschung"
+  },
+  {
+   "k": "research.max",
+   "v": "Vollständig erforscht"
+  },
+  {
+   "k": "research.cost",
+   "v": "Kosten: {0}"
+  },
+  {
+   "k": "options.title",
+   "v": "Optionen"
+  },
+  {
+   "k": "options.music",
+   "v": "Musiklautstärke: {0}%"
+  },
+  {
+   "k": "options.sfx",
+   "v": "Effektlautstärke: {0}%"
+  },
+  {
+   "k": "options.quality",
+   "v": "Grafikqualität: {0}"
+  },
+  {
+   "k": "options.auto",
+   "v": "Automatisch"
+  },
+  {
+   "k": "options.dof",
+   "v": "Tiefenunschärfe: {0}"
+  },
+  {
+   "k": "options.shake",
+   "v": "Bildschirmwackeln: {0}"
+  },
+  {
+   "k": "options.numbers",
+   "v": "Schadenszahlen: {0}"
+  },
+  {
+   "k": "options.language",
+   "v": "Sprache: {0}"
+  },
+  {
+   "k": "options.on",
+   "v": "An"
+  },
+  {
+   "k": "options.off",
+   "v": "Aus"
+  },
+  {
+   "k": "quality.Low",
+   "v": "Niedrig"
+  },
+  {
+   "k": "quality.Medium",
+   "v": "Mittel"
+  },
+  {
+   "k": "quality.High",
+   "v": "Hoch"
+  },
+  {
+   "k": "quality.Ultra",
+   "v": "Ultra"
+  },
+  {
+   "k": "language.en",
+   "v": "English"
+  },
+  {
+   "k": "language.de",
+   "v": "Deutsch"
+  },
+  {
+   "k": "credits.title",
+   "v": "Mitwirkende"
+  },
+  {
+   "k": "credits.body",
+   "v": "BRASSLIGHT\n\nWelten inspiriert von den gemeinfreien Romanen von Jules Verne\n(Reise zum Mittelpunkt der Erde, Zwanzigtausend Meilen unter dem Meer)\nund H. G. Wells (Krieg der Welten, Die ersten Menschen im Mond).\n\nAlle Figuren, Grafiken, Musik und Designs dieses Spiels sind eigenständig.\nErstellt mit Unity. Platzhalter-Grafik und -Audio werden prozedural erzeugt."
+  },
+  {
+   "k": "pause.title",
+   "v": "Pause"
+  },
+  {
+   "k": "pause.resume",
+   "v": "Weiter"
+  },
+  {
+   "k": "pause.abandon",
+   "v": "Expedition abbrechen"
+  },
+  {
+   "k": "levelup.title",
+   "v": "Stufe {0}!"
+  },
+  {
+   "k": "levelup.new",
+   "v": "Neues Gerät"
+  },
+  {
+   "k": "levelup.level",
+   "v": "Stufe {0}"
+  },
+  {
+   "k": "levelup.heal",
+   "v": "Feldrationen"
+  },
+  {
+   "k": "levelup.healdesc",
+   "v": "Stellt 30 LP wieder her."
+  },
+  {
+   "k": "build.title",
+   "v": "Auf diesem Bauplatz bauen"
+  },
+  {
+   "k": "build.brass",
+   "v": "Messing: {0}"
+  },
+  {
+   "k": "build.cost",
+   "v": "Kosten: {0} Messing"
+  },
+  {
+   "k": "build.leave",
+   "v": "Bauplatz frei lassen"
+  },
+  {
+   "k": "results.victory",
+   "v": "Die Expedition triumphiert!"
+  },
+  {
+   "k": "results.defeat",
+   "v": "Die Expedition ist verloren"
+  },
+  {
+   "k": "results.body",
+   "v": "Überlebt: {0}:{1:00}\nErreichte Stufe: {2}\nBesiegte Kreaturen: {3}\nAngeworbene Gefährten: {4}\nGebaute Bauwerke: {5}\nGesammeltes Messing: {6}"
+  },
+  {
+   "k": "results.points",
+   "v": "+{0} Forschungspunkte (gesamt {1})"
+  },
+  {
+   "k": "results.continue",
+   "v": "Weiter"
+  },
+  {
+   "k": "hud.level",
+   "v": "ST {0}"
+  },
+  {
+   "k": "hud.brass",
+   "v": "Messing {0}"
+  },
+  {
+   "k": "hud.crew",
+   "v": "Crew {0}/{1}"
+  },
+  {
+   "k": "hud.kills",
+   "v": "Besiegt {0}"
+  },
+  {
+   "k": "hud.recruiting",
+   "v": "Im Ring bleiben: {0} wird angeworben"
+  },
+  {
+   "k": "hud.scrapping",
+   "v": "Crew voll: Verschrotten für {0} Messing"
+  },
+  {
+   "k": "hud.surveying",
+   "v": "Bauplatz wird vermessen ..."
+  },
+  {
+   "k": "hud.upgrading",
+   "v": "{0} wird auf St. {1} verbessert ({2} Messing)"
+  },
+  {
+   "k": "hud.maxed",
+   "v": "{0} ist voll ausgebaut"
+  },
+  {
+   "k": "toast.elite",
+   "v": "Ein Elite-{0} naht!"
+  },
+  {
+   "k": "toast.boss",
+   "v": "{0} ist erwacht!"
+  },
+  {
+   "k": "toast.recruited",
+   "v": "{0} schließt sich deiner Crew an!"
+  },
+  {
+   "k": "toast.scrapped",
+   "v": "Überrest verschrottet: +{0} Messing"
+  },
+  {
+   "k": "toast.lost",
+   "v": "{0} ist gefallen"
+  },
+  {
+   "k": "toast.nobrass",
+   "v": "Nicht genug Messing ({0} benötigt)"
+  },
+  {
+   "k": "toast.destroyed",
+   "v": "{0} zerstört"
+  },
+  {
+   "k": "toast.revived",
+   "v": "Zweiter Atem!"
+  },
+  {
+   "k": "toast.achievement",
+   "v": "Erfolg: {0}"
+  },
+  {
+   "k": "world.hollow_earth.name",
+   "v": "Die hohle Erde"
+  },
+  {
+   "k": "world.ocean_depths.name",
+   "v": "Zwanzigtausend Meilen tief"
+  },
+  {
+   "k": "world.martian_invasion.name",
+   "v": "Die Marsinvasion"
+  },
+  {
+   "k": "world.lunar_caverns.name",
+   "v": "Die Mondhöhlen"
+  },
+  {
+   "k": "leader.ines_varga.name",
+   "v": "Ines Varga, Ingenieurin"
+  },
+  {
+   "k": "leader.ines_varga.desc",
+   "v": "Baut 25 % schneller."
+  },
+  {
+   "k": "leader.otto_brenner.name",
+   "v": "Dr. Otto Brenner, Naturforscher"
+  },
+  {
+   "k": "leader.otto_brenner.desc",
+   "v": "Wirbt 25 % schneller an."
+  },
+  {
+   "k": "leader.mara_holt.name",
+   "v": "Kapitänin Mara Holt, Luftschifferin"
+  },
+  {
+   "k": "leader.mara_holt.desc",
+   "v": "10 % schneller, +20 max. LP."
+  },
+  {
+   "k": "gadget.steam_cannon.name",
+   "v": "Dampfkanone"
+  },
+  {
+   "k": "gadget.steam_cannon.desc",
+   "v": "Feuert Messingkugeln auf den nächsten Gegner."
+  },
+  {
+   "k": "gadget.arc_coil.name",
+   "v": "Lichtbogenspule"
+  },
+  {
+   "k": "gadget.arc_coil.desc",
+   "v": "Blitze springen zwischen nahen Gegnern."
+  },
+  {
+   "k": "gadget.gyro_blades.name",
+   "v": "Kreiselklingen"
+  },
+  {
+   "k": "gadget.gyro_blades.desc",
+   "v": "Rotierende Klingen umkreisen die Expeditionsleitung."
+  },
+  {
+   "k": "gadget.mortar.name",
+   "v": "Feldmörser"
+  },
+  {
+   "k": "gadget.mortar.desc",
+   "v": "Schleudert Sprenggranaten auf den Schwarm."
+  },
+  {
+   "k": "gadget.flame_bellows.name",
+   "v": "Flammenbalg"
+  },
+  {
+   "k": "gadget.flame_bellows.desc",
+   "v": "Bläst einen Feuerkegel in Laufrichtung."
+  },
+  {
+   "k": "gadget.aether_pulse.name",
+   "v": "Ätherpuls"
+  },
+  {
+   "k": "gadget.aether_pulse.desc",
+   "v": "Eine knisternde Aura, die brennt und verlangsamt."
+  },
+  {
+   "k": "passive.might.name",
+   "v": "Gehärteter Stahl"
+  },
+  {
+   "k": "passive.might.desc",
+   "v": "+10 % Schaden."
+  },
+  {
+   "k": "passive.haste.name",
+   "v": "Geölte Zahnräder"
+  },
+  {
+   "k": "passive.haste.desc",
+   "v": "-8 % Abklingzeit der Geräte."
+  },
+  {
+   "k": "passive.speed.name",
+   "v": "Federstiefel"
+  },
+  {
+   "k": "passive.speed.desc",
+   "v": "+8 % Lauftempo."
+  },
+  {
+   "k": "passive.magnet.name",
+   "v": "Magneteisenstein"
+  },
+  {
+   "k": "passive.magnet.desc",
+   "v": "+30 % Sammelradius."
+  },
+  {
+   "k": "passive.plating.name",
+   "v": "Kesselpanzerung"
+  },
+  {
+   "k": "passive.plating.desc",
+   "v": "+15 max. LP."
+  },
+  {
+   "k": "passive.area.name",
+   "v": "Weites Kaliber"
+  },
+  {
+   "k": "passive.area.desc",
+   "v": "+10 % Wirkungsbereich."
+  },
+  {
+   "k": "passive.engineering.name",
+   "v": "Taschenhandbuch"
+  },
+  {
+   "k": "passive.engineering.desc",
+   "v": "-10 % Bauzeit."
+  },
+  {
+   "k": "passive.charisma.name",
+   "v": "Silberzunge"
+  },
+  {
+   "k": "passive.charisma.desc",
+   "v": "-10 % Anwerbezeit."
+  },
+  {
+   "k": "structure.barricade.name",
+   "v": "Barrikade"
+  },
+  {
+   "k": "structure.barricade.desc",
+   "v": "Hält den Schwarm auf."
+  },
+  {
+   "k": "structure.steam_turret.name",
+   "v": "Dampfgeschütz"
+  },
+  {
+   "k": "structure.steam_turret.desc",
+   "v": "Beschießt den nächsten Gegner."
+  },
+  {
+   "k": "structure.mine_field.name",
+   "v": "Minenfeld"
+  },
+  {
+   "k": "structure.mine_field.desc",
+   "v": "Explodiert unter Gegnern, rüstet sich neu."
+  },
+  {
+   "k": "structure.lightning_mast.name",
+   "v": "Blitzmast"
+  },
+  {
+   "k": "structure.lightning_mast.desc",
+   "v": "Kettenblitz auf 4 Ziele."
+  },
+  {
+   "k": "structure.lure_beacon.name",
+   "v": "Köderleuchtfeuer"
+  },
+  {
+   "k": "structure.lure_beacon.desc",
+   "v": "Lockt den Schwarm an."
+  },
+  {
+   "k": "structure.field_workshop.name",
+   "v": "Feldwerkstatt"
+  },
+  {
+   "k": "structure.field_workshop.desc",
+   "v": "Repariert Gefährten und Leitung."
+  },
+  {
+   "k": "research.hull.name",
+   "v": "Verstärkter Rumpf"
+  },
+  {
+   "k": "research.hull.desc",
+   "v": "+10 max. LP pro Stufe."
+  },
+  {
+   "k": "research.munitions.name",
+   "v": "Bessere Munition"
+  },
+  {
+   "k": "research.munitions.desc",
+   "v": "+5 % Schaden pro Stufe."
+  },
+  {
+   "k": "research.gearing.name",
+   "v": "Feine Übersetzung"
+  },
+  {
+   "k": "research.gearing.desc",
+   "v": "+4 % Lauftempo pro Stufe."
+  },
+  {
+   "k": "research.berths.name",
+   "v": "Zusätzliche Kojen"
+  },
+  {
+   "k": "research.berths.desc",
+   "v": "+1 Crew-Kapazität pro Stufe."
+  },
+  {
+   "k": "research.supply_crate.name",
+   "v": "Vorratskiste"
+  },
+  {
+   "k": "research.supply_crate.desc",
+   "v": "+10 Messing zu Beginn pro Stufe."
+  },
+  {
+   "k": "research.lodestone.name",
+   "v": "Magnetsteinanordnung"
+  },
+  {
+   "k": "research.lodestone.desc",
+   "v": "+10 % Sammelradius pro Stufe."
+  },
+  {
+   "k": "research.second_wind.name",
+   "v": "Zweiter Atem"
+  },
+  {
+   "k": "research.second_wind.desc",
+   "v": "Einmal pro Lauf mit 50 % LP wiederbeleben."
+  },
+  {
+   "k": "ach.ACH_KILLS_100",
+   "v": "Erste Salve"
+  },
+  {
+   "k": "ach.ACH_KILLS_1K",
+   "v": "Dampf und Donner"
+  },
+  {
+   "k": "ach.ACH_KILLS_10K",
+   "v": "Zehntausend Meilen"
+  },
+  {
+   "k": "ach.ACH_KILLS_100K",
+   "v": "Ein Jahrhundert Dampf"
+  },
+  {
+   "k": "ach.ACH_RUN_KILLS_1000",
+   "v": "Schwarmbrecher"
+  },
+  {
+   "k": "ach.ACH_RUN_SURVIVE_15",
+   "v": "Fünfzehn Minuten Ruhm"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FIRST",
+   "v": "Frischer Rekrut"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_FULL_CREW",
+   "v": "Volle Besatzung"
+  },
+  {
+   "k": "ach.ACH_RECRUIT_25",
+   "v": "Menagerie"
+  },
+  {
+   "k": "ach.ACH_SCRAP_10",
+   "v": "Bergungsrecht"
+  },
+  {
+   "k": "ach.ACH_BUILD_FIRST",
+   "v": "Zusammengeschraubt"
+  },
+  {
+   "k": "ach.ACH_STRUCTURE_MAX",
+   "v": "Überbaut"
+  },
+  {
+   "k": "ach.ACH_FORTRESS_RUN",
+   "v": "Festungslauf"
+  },
+  {
+   "k": "ach.ACH_WORLD_HOLLOW_EARTH",
+   "v": "Mittelpunkt der Erde"
+  },
+  {
+   "k": "ach.ACH_WORLD_DEEP_SEA",
+   "v": "Zwanzigtausend Meilen"
+  },
+  {
+   "k": "ach.ACH_WORLD_MARS",
+   "v": "Krieg der Welten"
+  },
+  {
+   "k": "ach.ACH_WORLD_MOON",
+   "v": "Mondlandung"
+  },
+  {
+   "k": "ach.ACH_WORLDS_ALL",
+   "v": "Rund um die unmögliche Welt"
+  },
+  {
+   "k": "ach.ACH_BOSS_FULL_CREW",
+   "v": "Gemeinsam bis zum Ende"
+  },
+  {
+   "k": "ach.ACH_LEADER_FIRST_UNLOCK",
+   "v": "Ein neues Gesicht"
+  },
+  {
+   "k": "ach.ACH_LEADER_ENGINEER",
+   "v": "Stolz der Ingenieurin"
+  },
+  {
+   "k": "ach.ACH_RESEARCH_FIRST",
+   "v": "Finanzierung gesichert"
+  },
+  {
+   "k": "ach.ACH_RUNS_50",
+   "v": "Erfahrene Forscherin"
+  },
+  {
+   "k": "ach.ACH_BESTIARY_RECRUIT_ALL",
+   "v": "Die vollständige Crew"
+  }
+ ]
+}

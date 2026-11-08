@@ -34,6 +34,10 @@ namespace Vamp.Core.Meta
         public long totalKills;
         /// <summary>Lifetime recruits.</summary>
         public int totalRecruits;
+        /// <summary>Lifetime remnants scrapped.</summary>
+        public int totalScraps;
+        /// <summary>Achievement API names already unlocked (mirrors platform state, also for platforms without achievements).</summary>
+        public List<string> achievements = new List<string>();
         /// <summary>Lifetime structures built.</summary>
         public int totalStructures;
         /// <summary>Longest survival (s).</summary>

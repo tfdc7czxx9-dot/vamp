@@ -7,6 +7,7 @@ Indie game development managed through 55 coordinated Claude Code subagents.
 **Targets**: Steam (Windows/macOS/Linux + Steam Deck), Google Play (Android), Apple App Store (iOS).
 **Business model**: Premium (one-time purchase) on every store — no ads, no IAP.
 **Concept**: `design/gdd/game-concept.md` · **Roadmap**: `production/roadmap-to-launch.md`
+**Build & test**: `docs/BUILDING.md` · **Open work**: `docs/tech-debt-register.md` · **Unity project**: `src/Brasslight`
 Each agent owns a specific domain, enforcing separation of concerns and quality.
 
 ## Technology Stack

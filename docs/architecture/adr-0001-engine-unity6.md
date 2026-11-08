@@ -31,7 +31,7 @@ store-plugin ecosystem and CI tooling (GameCI) for that combination.
 |-------|-------|
 | Engine | Unity 6.3 LTS |
 | Render pipeline | URP — amended by ADR-0002: Universal Renderer (3D) instead of 2D Renderer |
-| Scripting backend | IL2CPP on all platforms (required for iOS, recommended for Android ARM64 and for desktop performance) |
+| Scripting backend | IL2CPP on Android (ARM64) and iOS (required). Mono on desktop: IL2CPP for Windows/macOS cannot be cross-compiled on Linux CI runners; revisit if profiling shows a need (amended 2026-11-08) |
 | Android | ARM64, AAB output, Play Asset Delivery if > 150 MB |
 | iOS | Xcode project export, built and signed on macOS (local or CI runner) |
 | Knowledge-gap risk | HIGH — Unity 6.x APIs post-date model training; check `docs/engine-reference/unity/` before using APIs |

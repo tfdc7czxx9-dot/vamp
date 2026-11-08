@@ -28,6 +28,7 @@ namespace Vamp.Core.Meta
             s.wonWorlds ??= new List<string>();
             s.unlockedLeaders ??= new List<string>();
             s.recruitedSpecies ??= new List<string>();
+            s.achievements ??= new List<string>();
             s.settings ??= new SettingsData();
             s.selectedLeader ??= "";
             s.selectedWorld ??= "";
@@ -101,6 +102,7 @@ namespace Vamp.Core.Meta
             Save.totalKills += sim.Stats.Kills;
             Save.totalRecruits += sim.Stats.Recruited;
             Save.totalStructures += sim.Stats.StructuresBuilt;
+            Save.totalScraps += sim.Stats.Scrapped;
             if (sim.Time > Save.bestTimeSeconds) Save.bestTimeSeconds = sim.Time;
             if (sim.Stats.BossDefeated)
             {
