@@ -1,3 +1,24 @@
+# BRASSLIGHT — Extraordinary Expeditions
+
+A premium survivor-like roguelite in Victorian retro-sci-fi worlds inspired by the public-domain
+novels of Jules Verne and H. G. Wells. Pixel-art characters in lit 3D diorama worlds.
+**Recruit** defeated elite monsters into your crew and **build** fortifications on the battlefield.
+It plays with movement only, so it controls the same on Steam (PC/Steam Deck), Android and iOS.
+
+| | |
+|---|---|
+| Concept | [`design/gdd/game-concept.md`](design/gdd/game-concept.md) |
+| Build, test and CI | [`docs/BUILDING.md`](docs/BUILDING.md) |
+| Roadmap to the stores | [`production/roadmap-to-launch.md`](production/roadmap-to-launch.md) |
+| Open work | [`docs/tech-debt-register.md`](docs/tech-debt-register.md) |
+| Unity project | [`src/Brasslight`](src/Brasslight) (Unity 6.3 LTS, URP) |
+
+Quick check without Unity: `dotnet test tests/dotnet/Brasslight.Core.Tests.csproj`
+
+The rest of this README documents the **Claude Code Game Studios** agent framework the project uses.
+
+---
+
 <p align="center">
   <h1 align="center">Claude Code Game Studios</h1>
   <p align="center">
