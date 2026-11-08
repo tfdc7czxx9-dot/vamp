@@ -1,4 +1,4 @@
-# Art Bible: IMPOSSIBLE VOYAGES
+# Art Bible: BRASSLIGHT
 
 ## Document Status
 

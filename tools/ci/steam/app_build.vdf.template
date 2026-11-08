@@ -1,0 +1,22 @@
+// SteamPipe app build template for BRASSLIGHT. NO CREDENTIALS in this file.
+// Render with envsubst (see README.md); do not commit rendered output.
+// Variables: APPID, DEPOTID_WINDOWS, DEPOTID_LINUX, DEPOTID_MACOS,
+//            BUILD_DESC, SETLIVE_BRANCH, CONTENT_ROOT, OUTPUT_DIR
+// Leave SETLIVE_BRANCH empty to upload without setting any branch live.
+// Never set "default" from CI; the owner promotes builds by hand.
+"AppBuild"
+{
+	"AppID" "${APPID}"
+	"Desc" "${BUILD_DESC}"
+	"Preview" "0"
+	"SetLive" "${SETLIVE_BRANCH}"
+	"ContentRoot" "${CONTENT_ROOT}"
+	"BuildOutput" "${OUTPUT_DIR}"
+
+	"Depots"
+	{
+		"${DEPOTID_WINDOWS}" "depot_build_windows.vdf"
+		"${DEPOTID_LINUX}" "depot_build_linux.vdf"
+		"${DEPOTID_MACOS}" "depot_build_macos.vdf"
+	}
+}

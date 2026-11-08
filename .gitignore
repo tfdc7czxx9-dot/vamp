@@ -164,3 +164,7 @@ crashlytics-build.properties
 *.jks
 *.p12
 *.mobileprovision
+
+# === .NET test harness ===
+tests/dotnet/bin/
+tests/dotnet/obj/

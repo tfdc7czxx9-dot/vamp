@@ -1,15 +1,17 @@
-# Game Concept: IMPOSSIBLE VOYAGES (working title, codename VAMP)
+# Game Concept: BRASSLIGHT (codename VAMP)
 
 > **Status**: Draft v0.2 — owner chose setting and signature mechanics on 2026-11-08.
 > Supersedes v0.1 (vampire setting, dropped). Validate with
 > `/design-review design/gdd/game-concept.md`.
 >
+> **Title**: **BRASSLIGHT** (brass + gaslight), chosen 2026-11-08. A web search
+> found no game or trademark with this name. A formal trademark search
+> (EUIPO/DPMA/USPTO) is still required before the Steam page goes live.
+> Store subtitle: *BRASSLIGHT — Extraordinary Expeditions*.
+>
 > **IP basis**: worlds and figures come from **public-domain** novels by Jules Verne
-> (†1905) and H. G. Wells (†1946), and the title is borrowed from Georges Méliès'
-> film *Le Voyage à travers l'impossible* (1904, also PD). Our protagonists, art,
-> designs and all new content are **original and owned by us**. Rules for what
-> may and may not be used are in `design/ip-guidelines.md`. A trademark search on
-> the final title is still required (`legal-compliance-specialist`).
+> (†1905) and H. G. Wells (†1946). Our protagonists, art, designs and all new
+> content are **original and owned by us**. Rules are in `design/ip-guidelines.md`.
 
 ## Elevator Pitch
 

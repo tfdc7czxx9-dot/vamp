@@ -1,0 +1,22 @@
+// SteamPipe depot template (linux). NO CREDENTIALS in this file.
+// Variables: DEPOTID_LINUX (rendered with envsubst, see README.md)
+// ContentRoot (from app_build) must contain the linux player build output.
+"DepotBuild"
+{
+	"DepotID" "${DEPOTID_LINUX}"
+
+	"FileMapping"
+	{
+		"LocalPath" "linux/*"
+		"DepotPath" "."
+		"Recursive" "1"
+	}
+
+	// Never ship these (dev-only files, debug data, Unity backup folders).
+	"FileExclusion" "steam_appid.txt"
+	"FileExclusion" "*_BurstDebugInformation_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*.dSYM*"
+	// Linux: chmod +x the player binary on the build machine before upload (precaution); verify on a clean install.
+}

@@ -1,0 +1,22 @@
+// SteamPipe depot template (macos). NO CREDENTIALS in this file.
+// Variables: DEPOTID_MACOS (rendered with envsubst, see README.md)
+// ContentRoot (from app_build) must contain the macos player build output.
+"DepotBuild"
+{
+	"DepotID" "${DEPOTID_MACOS}"
+
+	"FileMapping"
+	{
+		"LocalPath" "macos/*"
+		"DepotPath" "."
+		"Recursive" "1"
+	}
+
+	// Never ship these (dev-only files, debug data, Unity backup folders).
+	"FileExclusion" "steam_appid.txt"
+	"FileExclusion" "*_BurstDebugInformation_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*.dSYM*"
+	// macOS: ship the notarized, signed .app. Do not upload an unsigned bundle.
+}

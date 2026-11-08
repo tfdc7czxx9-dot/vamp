@@ -1,4 +1,4 @@
-# Sound Bible: IMPOSSIBLE VOYAGES
+# Sound Bible: BRASSLIGHT
 
 > Version 0.1. Music direction set by owner on 2026-11-08. Owner: audio-director.
 > Sections marked *TODO* are completed via `/team-audio`.
