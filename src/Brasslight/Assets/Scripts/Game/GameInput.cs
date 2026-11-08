@@ -74,11 +74,20 @@ namespace Vamp.Game
             EnhancedTouchSupport.Enable();
         }
 
-        /// <summary>Samples all devices. Call once per frame before reading.</summary>
-        public void Update()
+        /// <summary>Screen positions (GUI space, y down) of touches that began this frame; used for UI taps.</summary>
+        public readonly System.Collections.Generic.List<Vector2> Taps = new System.Collections.Generic.List<Vector2>(4);
+
+        /// <summary>Samples all devices. Call once per frame before reading. The joystick is only active during gameplay.</summary>
+        public void Update(bool gameplay)
         {
             Vector2 move = _move.ReadValue<Vector2>();
-            UpdateTouch(ref move);
+            Taps.Clear();
+            var all = ETouch.activeTouches;
+            for (int i = 0; i < all.Count; i++)
+                if (all[i].phase == UnityEngine.InputSystem.TouchPhase.Began)
+                    Taps.Add(new Vector2(all[i].screenPosition.x, Screen.height - all[i].screenPosition.y));
+            if (gameplay) UpdateTouch(ref move);
+            else { _joystickTouchId = -1; JoystickActive = false; }
             Move = Vector2.ClampMagnitude(move, 1f);
 
             Vector2 nav = _navigate.ReadValue<Vector2>();

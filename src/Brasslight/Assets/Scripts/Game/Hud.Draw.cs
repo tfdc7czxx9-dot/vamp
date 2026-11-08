@@ -41,6 +41,7 @@ namespace Vamp.Game
             var sa = Screen.safeArea;
             _safe = new Rect(sa.x / _scale, (Screen.height - sa.yMax) / _scale, sa.width / _scale, sa.height / _scale);
             GUI.matrix = Matrix4x4.Scale(new Vector3(_scale, _scale, 1f));
+            if (Event.current.type == EventType.Repaint) { _hitRects.Clear(); _hitIndex.Clear(); }
 
             var g = _g;
             switch (g.Screen)
@@ -87,6 +88,16 @@ namespace Vamp.Game
             Fill(new Rect(r.x + 2, r.y + 2, r.width - 4, r.height - 4), fill);
         }
 
+        /// <summary>True on touch devices: taps are handled through the Input System in Update.</summary>
+        private static bool _touchUi => Application.isMobilePlatform;
+
+        private void RecordHit(Rect r, int index)
+        {
+            if (Event.current.type != EventType.Repaint) return;
+            _hitRects.Add(r);
+            _hitIndex.Add(index);
+        }
+
         private void Dim() => Fill(new Rect(0, 0, _w, _h), new Color(0, 0, 0, 0.55f));
 
         private bool MenuButton(Rect r, int index)
@@ -97,7 +108,8 @@ namespace Vamp.Game
             else Frame(r, new Color(0.12f, 0.1f, 0.1f, 0.85f), new Color(0.45f, 0.34f, 0.18f));
             var style = !it.Enabled ? _buttonOff : sel ? _buttonSel : _button;
             GUI.Label(r, it.Label, style);
-            if (GUI.Button(r, GUIContent.none, GUIStyle.none))
+            RecordHit(r, index);
+            if (!_touchUi && GUI.Button(r, GUIContent.none, GUIStyle.none))
             {
                 _sel = index;
                 Activate(index);
@@ -183,7 +195,8 @@ namespace Vamp.Game
                 if (sel) Fill(new Rect(r.x + 2, r.y + 2, r.width - 4, 8), Brass);
                 Text(new Rect(r.x + 18, r.y + 22, cw - 36, 60), it.Label, _cardTitle, it.Enabled ? Brass : Color.gray);
                 Text(new Rect(r.x + 18, r.y + 90, cw - 36, ch - 100), it.Detail, _body, it.Enabled ? Parchment : Color.gray);
-                if (GUI.Button(r, GUIContent.none, GUIStyle.none))
+                RecordHit(r, i);
+                if (!_touchUi && GUI.Button(r, GUIContent.none, GUIStyle.none))
                 {
                     _sel = i;
                     Activate(i);
@@ -227,7 +240,11 @@ namespace Vamp.Game
             var pause = new Rect(_safe.xMax - 70, _safe.y + 34, 56, 56);
             Frame(pause, new Color(0.12f, 0.1f, 0.1f, 0.8f), Brass);
             GUI.Label(pause, "II", _pauseGlyph);
-            if (_g.Screen == GameScreen.Run && GUI.Button(pause, GUIContent.none, GUIStyle.none)) _g.OpenPause();
+            if (_g.Screen == GameScreen.Run)
+            {
+                RecordHit(pause, PauseHit);
+                if (!_touchUi && GUI.Button(pause, GUIContent.none, GUIStyle.none)) _g.OpenPause();
+            }
             if (_exclusion.Length == 0) _exclusion = new Rect[1];
             _exclusion[0] = new Rect(pause.x * _scale, pause.y * _scale, pause.width * _scale, pause.height * _scale);
             _g.Input.JoystickExclusions = _exclusion;

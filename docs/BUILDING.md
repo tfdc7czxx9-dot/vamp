@@ -40,8 +40,9 @@ versions match your installed editor exactly.
    - sets the product name, landscape-only orientation, Linear colour space and the Input System
      input backend (Unity asks to restart; accept);
    - sets IL2CPP + ARM64 + min API 26 for Android, IL2CPP for iOS, and Mono for desktop;
-   - creates the material templates in `Assets/Brasslight/Materials` (so the URP shaders are
-     included in builds);
+   - creates six material templates in `Assets/Brasslight/Materials` (one per shader variant, for
+     example lit + alpha clip + emission), so the variants survive shader stripping in player builds;
+   - saves fog and ambient settings in the Boot scene, so fog variants are kept in builds;
    - creates `Assets/Scenes/Boot.unity` and puts it first in the build settings.
 7. Open `Assets/Scenes/Boot.unity` and press **Play**.
 8. Commit everything, including the `.meta` files, `ProjectSettings/` and `Packages/`.

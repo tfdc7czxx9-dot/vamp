@@ -18,10 +18,9 @@ namespace Vamp.Game
         /// <summary>The single instance.</summary>
         public static GameRoot Instance { get; private set; }
 
-        [SerializeField, Tooltip("URP Simple Lit material template (assigned by Brasslight > Setup).")]
-        private Material _litTemplate;
-        [SerializeField, Tooltip("URP Unlit material template (assigned by Brasslight > Setup).")]
-        private Material _unlitTemplate;
+        [SerializeField, Tooltip("Material templates indexed by MaterialVariant (assigned by Brasslight > Setup Project). " +
+            "They carry the shader keywords so the variants are included in player builds.")]
+        private Material[] _materialTemplates = new Material[6];
 
         internal BalanceConfig Config;
         internal SaveData Save;
@@ -64,7 +63,7 @@ namespace Vamp.Game
             Input = new GameInput();
             Rig = new CameraRig(transform);
             Post = new PostFx(transform);
-            Materials = new MaterialFactory(_litTemplate, _unlitTemplate);
+            Materials = new MaterialFactory(_materialTemplates);
             Batcher = new SpriteBatcher();
             World = new WorldView(transform, Materials);
             Fx = new Vfx(transform, Batcher, Materials);
@@ -73,6 +72,17 @@ namespace Vamp.Game
         }
 
         private IEnumerator Start()
+        {
+            yield return StartCoroutine(Boot());
+            if (Config == null)
+            {
+                Debug.LogError("[Boot] Failed to start; see previous errors.");
+                yield break;
+            }
+            Screen = GameScreen.Title;
+        }
+
+        private IEnumerator Boot()
         {
             string balanceJson = null;
             yield return StreamingFile.Read("balance.json", t => balanceJson = t);
@@ -85,9 +95,16 @@ namespace Vamp.Game
             BuildSprites();
             SelectedWorld = Mathf.Max(0, Config.WorldIndex(Save.selectedWorld));
             SelectedLeader = Mathf.Max(0, Config.LeaderIndex(Save.selectedLeader));
-            ApplySettings();
-            StartAttract();
-            Screen = GameScreen.Title;
+            try
+            {
+                ApplySettings();
+                StartAttract();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e);
+                Config = null;
+            }
         }
 
         private static BalanceConfig LoadConfig(string json)
@@ -95,9 +112,18 @@ namespace Vamp.Game
             var config = BalanceConfig.CreateDefault();
             if (!string.IsNullOrEmpty(json))
             {
-                var loaded = JsonUtility.FromJson<BalanceConfig>(json);
-                var errors = loaded?.Resolve();
-                if (loaded != null && errors.Count == 0) return loaded;
+                BalanceConfig loaded = null;
+                List<string> errors = null;
+                try
+                {
+                    loaded = JsonUtility.FromJson<BalanceConfig>(json);
+                    errors = loaded?.Resolve();
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError("[Config] balance.json could not be parsed: " + e.Message);
+                }
+                if (loaded != null && errors != null && errors.Count == 0) return loaded;
                 Debug.LogError("[Config] balance.json invalid, using defaults: " + (errors == null ? "parse error" : string.Join("; ", errors)));
             }
             config.Resolve();
@@ -182,7 +208,7 @@ namespace Vamp.Game
         private void Update()
         {
             Platform.Tick();
-            Input.Update();
+            Input.Update(Screen == GameScreen.Run);
             var screenBefore = Screen;
             Hud.Update();
             if (Sim == null) return;

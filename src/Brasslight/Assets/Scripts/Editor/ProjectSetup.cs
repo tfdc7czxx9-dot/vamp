@@ -86,36 +86,52 @@ namespace Vamp.EditorTools
             EnsureFolder("Assets/Brasslight");
             EnsureFolder(MaterialDir);
             EnsureFolder("Assets/Scenes");
-            var lit = CreateMaterial("SpriteLit", "Universal Render Pipeline/Simple Lit");
-            var unlit = CreateMaterial("SpriteUnlit", "Universal Render Pipeline/Unlit");
+            var variants = (MaterialVariant[])System.Enum.GetValues(typeof(MaterialVariant));
+            var templates = new Material[variants.Length];
+            foreach (var v in variants) templates[(int)v] = CreateTemplate(v);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            // Fog and flat ambient are set at runtime; saving them in the scene keeps the fog shader
+            // variants from being stripped ("Fog Modes: Automatic" only keeps modes used by build scenes).
+            RenderSettings.fog = true;
+            RenderSettings.fogMode = FogMode.Linear;
+            RenderSettings.fogColor = new Color(0.06f, 0.1f, 0.11f);
+            RenderSettings.fogStartDistance = 40f;
+            RenderSettings.fogEndDistance = 90f;
+            RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+            RenderSettings.ambientLight = new Color(0.3f, 0.32f, 0.35f);
+
             var go = new GameObject("Brasslight");
             var root = go.AddComponent<GameRoot>();
             var so = new SerializedObject(root);
-            so.FindProperty("_litTemplate").objectReferenceValue = lit;
-            so.FindProperty("_unlitTemplate").objectReferenceValue = unlit;
+            var arr = so.FindProperty("_materialTemplates");
+            arr.arraySize = templates.Length;
+            for (int i = 0; i < templates.Length; i++) arr.GetArrayElementAtIndex(i).objectReferenceValue = templates[i];
             so.ApplyModifiedPropertiesWithoutUndo();
             EditorSceneManager.SaveScene(scene, ScenePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
             AssetDatabase.SaveAssets();
         }
 
-        private static Material CreateMaterial(string name, string shader)
+        private static Material CreateTemplate(MaterialVariant v)
         {
-            string path = $"{MaterialDir}/{name}.mat";
+            string path = $"{MaterialDir}/Template_{v}.mat";
             var existing = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (existing != null) return existing;
+            if (existing != null)
+            {
+                MaterialFactory.ConfigureTemplate(existing, v);
+                EditorUtility.SetDirty(existing);
+                return existing;
+            }
+            string shader = MaterialFactory.ShaderName(v);
             var s = Shader.Find(shader);
             if (s == null)
             {
                 Debug.LogError($"[Brasslight] Shader '{shader}' not found. Is URP installed and the URP asset assigned in Graphics settings?");
                 return null;
             }
-            var m = new Material(s) { enableInstancing = true };
-            m.SetFloat("_AlphaClip", 1f);
-            m.EnableKeyword("_ALPHATEST_ON");
-            m.SetFloat("_Cull", 0f);
+            var m = new Material(s);
+            MaterialFactory.ConfigureTemplate(m, v);
             AssetDatabase.CreateAsset(m, path);
             return m;
         }
@@ -129,10 +145,19 @@ namespace Vamp.EditorTools
 
         /// <summary>Enables the Steam backend (requires Steamworks.NET in the project).</summary>
         [MenuItem("Brasslight/Platforms/Enable Steam (Steamworks.NET installed)")]
-        public static void EnableSteam() => PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "BRASSLIGHT_STEAM");
+        public static void EnableSteam() => SetDefine("BRASSLIGHT_STEAM", true);
 
         /// <summary>Disables the Steam backend.</summary>
         [MenuItem("Brasslight/Platforms/Disable Steam")]
-        public static void DisableSteam() => PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "");
+        public static void DisableSteam() => SetDefine("BRASSLIGHT_STEAM", false);
+
+        private static void SetDefine(string define, bool on)
+        {
+            var list = new System.Collections.Generic.List<string>(
+                PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone).Split(new[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries));
+            list.Remove(define);
+            if (on) list.Add(define);
+            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, string.Join(";", list));
+        }
     }
 }

@@ -23,7 +23,12 @@ namespace Vamp.Game
         private readonly Light _sun;
         private readonly Light _lantern;
         private readonly List<Light> _lights = new List<Light>();
-        private readonly List<GameObject> _propPool = new List<GameObject>();
+        private readonly Dictionary<PrimitiveType, Stack<GameObject>> _propPool = new Dictionary<PrimitiveType, Stack<GameObject>>
+        {
+            { PrimitiveType.Cube, new Stack<GameObject>() },
+            { PrimitiveType.Cylinder, new Stack<GameObject>() },
+        };
+        private readonly Dictionary<GameObject, PrimitiveType> _propType = new Dictionary<GameObject, PrimitiveType>();
         private readonly Dictionary<long, List<GameObject>> _chunks = new Dictionary<long, List<GameObject>>();
         private readonly List<long> _release = new List<long>();
         private readonly List<GameObject> _emissive = new List<GameObject>();
@@ -72,6 +77,7 @@ namespace Vamp.Game
             _seed = seed;
             _build = build;
             Color g = VecExt.Hex(world.groundColor), a = VecExt.Hex(world.accentColor), f = VecExt.Hex(world.fogColor);
+            DestroyWorldMaterials();
 
             _groundMat = _materials.Opaque(PixelArt.Ground(g, a, worldIndex), Color.white, Color.black, new Vector2(GroundSize / TileSize, GroundSize / TileSize));
             _ground.GetComponent<MeshRenderer>().sharedMaterial = _groundMat;
@@ -91,6 +97,13 @@ namespace Vamp.Game
             foreach (var kv in _chunks) foreach (var p in kv.Value) Release(p);
             _chunks.Clear();
             _lastChunkX = int.MinValue;
+        }
+
+        private void DestroyWorldMaterials()
+        {
+            if (_groundMat != null && _groundMat.mainTexture != null) Object.Destroy(_groundMat.mainTexture);
+            foreach (var m in new[] { _groundMat, _rockMat, _crystalMat, _stemMat, _capMat })
+                if (m != null) Object.Destroy(m);
         }
 
         /// <summary>Applies the quality tier (shadows, light budget).</summary>
@@ -210,19 +223,14 @@ namespace Vamp.Game
 
         private GameObject Acquire(PrimitiveType type, string name, Material mat)
         {
-            GameObject go = null;
-            for (int i = _propPool.Count - 1; i >= 0; i--)
-            {
-                if (_propPool[i].GetComponent<MeshFilter>().sharedMesh.name != MeshName(type)) continue;
-                go = _propPool[i];
-                _propPool.RemoveAt(i);
-                break;
-            }
+            var pool = _propPool[type];
+            GameObject go = pool.Count > 0 ? pool.Pop() : null;
             if (go == null)
             {
                 go = GameObject.CreatePrimitive(type);
                 Object.Destroy(go.GetComponent<Collider>());
                 go.transform.SetParent(_root, false);
+                _propType[go] = type;
             }
             go.name = name;
             go.GetComponent<MeshRenderer>().sharedMaterial = mat;
@@ -230,12 +238,10 @@ namespace Vamp.Game
             return go;
         }
 
-        private static string MeshName(PrimitiveType t) => t == PrimitiveType.Cube ? "Cube" : "Cylinder";
-
         private void Release(GameObject go)
         {
             go.SetActive(false);
-            _propPool.Add(go);
+            _propPool[_propType[go]].Push(go);
         }
 
         private void AssignLights(Vector3 player)

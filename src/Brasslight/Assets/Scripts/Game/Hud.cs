@@ -29,6 +29,9 @@ namespace Vamp.Game
         private readonly List<Item> _items = new List<Item>();
         private readonly List<ToastMsg> _toasts = new List<ToastMsg>();
         private int _sel;
+        private const int PauseHit = -2;
+        private readonly List<Rect> _hitRects = new List<Rect>(16);
+        private readonly List<int> _hitIndex = new List<int>(16);
         private GameScreen _lastScreen = GameScreen.Loading;
         private bool _horizontal;
         private Action _back;
@@ -63,6 +66,18 @@ namespace Vamp.Game
             _sel = Mathf.Clamp(_sel, 0, _items.Count - 1);
 
             var input = _g.Input;
+            // Touch taps via the Input System (IMGUI may not receive touches with the legacy input backend off).
+            foreach (var tap in input.Taps)
+            {
+                var p = tap / _scale;
+                for (int i = 0; i < _hitRects.Count; i++)
+                {
+                    if (!_hitRects[i].Contains(p)) continue;
+                    if (_hitIndex[i] == PauseHit) _g.OpenPause();
+                    else if (_hitIndex[i] < _items.Count) { _sel = _hitIndex[i]; Activate(_sel); }
+                    return;
+                }
+            }
             int dir = _horizontal ? input.NavStep.x : -input.NavStep.y;
             if (dir != 0) { _sel = (_sel + dir + _items.Count) % _items.Count; _g.Sound.Click(); }
             int adjust = _horizontal ? 0 : input.NavStep.x;
